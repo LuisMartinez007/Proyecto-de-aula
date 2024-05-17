@@ -167,6 +167,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menu.setTitle("SALUDOS " + VentanaPrincipal.gestionVenta.getVenta().cliente.nombre);
         menu.setLocationRelativeTo(null);
         menu.setVisible(true);
+        this.setVisible(false);
         JOptionPane.showMessageDialog(null, "Para seleccionar un plato presione su nombre");
     }//GEN-LAST:event_btnSiguienteActionPerformed
 

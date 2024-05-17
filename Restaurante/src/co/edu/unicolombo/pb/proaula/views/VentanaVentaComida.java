@@ -35,6 +35,18 @@ public class VentanaVentaComida extends javax.swing.JDialog {
         SetImageLabel(jLabel1,"src/imagenes/fondo_cuenta.jpg");
         etiPrecio.setText("$"+producto.precio);
         this.producto = producto;
+        if(primerIngrediente.getText()== null){
+            primerIngrediente.setEnabled(false);
+            primerIngrediente.setVisible(false);
+        }
+        if(segundoIngrediente.getText()== null){
+            segundoIngrediente.setEnabled(false);
+            segundoIngrediente.setVisible(false);
+        }
+        if(tercerIngrediente.getText()== null){
+            tercerIngrediente.setEnabled(false);
+            tercerIngrediente.setVisible(false);
+        }
     }
 
     

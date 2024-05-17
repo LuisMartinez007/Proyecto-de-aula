@@ -26,6 +26,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
          SetImageLabel(etiPizza,"src/imagenes/pizza.jpeg");
          SetImageLabel(etiImangenBebidas,"src/imagenes/Limonada.jpg");
           SetImageLabel(etiFondo,"src/imagenes/menu2.jpg");
+         SetImageLabel(etipasta,"src/imagenes/pastas.jpg");
            
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -110,7 +111,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         pizzaNapolitana.setForeground(new java.awt.Color(255, 255, 255));
         pizzaNapolitana.setText("Pizza napolitana");
-        pizzaNapolitana.setToolTipText("Clic aqui para configurar");
+        pizzaNapolitana.setToolTipText("Clic aqui para pedir");
         pizzaNapolitana.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pizzaNapolitanaMouseClicked(evt);
@@ -131,6 +132,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         pizzaMargarita.setForeground(new java.awt.Color(255, 255, 255));
         pizzaMargarita.setText("Pizza margarita");
+        pizzaMargarita.setToolTipText("Clic aqui para pedir");
         pizzaMargarita.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pizzaMargaritaMouseClicked(evt);
@@ -150,6 +152,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         pizzaCapricciosa.setForeground(new java.awt.Color(255, 255, 255));
         pizzaCapricciosa.setText("Pizza capricciosa");
+        pizzaCapricciosa.setToolTipText("Clic aqui para pedir");
         pizzaCapricciosa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pizzaCapricciosaMouseClicked(evt);
@@ -169,6 +172,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         pizzaFruttidimare.setForeground(new java.awt.Color(255, 255, 255));
         pizzaFruttidimare.setText("Pizza frutti di mare");
+        pizzaFruttidimare.setToolTipText("Clic aqui para pedir");
         pizzaFruttidimare.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pizzaFruttidimareMouseClicked(evt);
@@ -188,6 +192,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         pizzaBoscaiola.setForeground(new java.awt.Color(255, 255, 255));
         pizzaBoscaiola.setText("Pizza boscaiola");
+        pizzaBoscaiola.setToolTipText("Clic aqui para pedir");
         pizzaBoscaiola.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pizzaBoscaiolaMouseClicked(evt);
@@ -207,6 +212,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         etiLimonada.setForeground(new java.awt.Color(255, 255, 255));
         etiLimonada.setText("Limonada");
+        etiLimonada.setToolTipText("Clic aqui para pedir");
         etiLimonada.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 etiLimonadaMouseClicked(evt);
@@ -226,6 +232,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         etiCocacola.setForeground(new java.awt.Color(255, 255, 255));
         etiCocacola.setText("Coca cola");
+        etiCocacola.setToolTipText("Clic aqui para pedir");
         etiCocacola.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 etiCocacolaMouseClicked(evt);
@@ -245,6 +252,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         etiPepsi.setForeground(new java.awt.Color(255, 255, 255));
         etiPepsi.setText("Pepsi");
+        etiPepsi.setToolTipText("Clic aqui para pedir");
         etiPepsi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 etiPepsiMouseClicked(evt);
@@ -264,6 +272,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         etiAgua.setForeground(new java.awt.Color(255, 255, 255));
         etiAgua.setText("Agua");
+        etiAgua.setToolTipText("Clic aqui para pedir");
         etiAgua.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 etiAguaMouseClicked(evt);
@@ -283,6 +292,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         etiAguamineral.setForeground(new java.awt.Color(255, 255, 255));
         etiAguamineral.setText("Agua mineral");
+        etiAguamineral.setToolTipText("Clic aqui para pedir");
         etiAguamineral.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 etiAguamineralMouseClicked(evt);
@@ -302,6 +312,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         etiTelimon.setForeground(new java.awt.Color(255, 255, 255));
         etiTelimon.setText("Te de limon");
+        etiTelimon.setToolTipText("Clic aqui para pedir");
         etiTelimon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 etiTelimonMouseClicked(evt);
@@ -339,6 +350,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         etiTagliatelle.setForeground(new java.awt.Color(255, 255, 255));
         etiTagliatelle.setText("Tagliatelle");
+        etiTagliatelle.setToolTipText("Clic aqui para pedir");
         etiTagliatelle.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 etiTagliatelleMouseClicked(evt);
@@ -356,6 +368,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         etiMarinara.setForeground(new java.awt.Color(255, 255, 255));
         etiMarinara.setText("Marinara");
+        etiMarinara.setToolTipText("Clic aqui para pedir");
         etiMarinara.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 etiMarinaraMouseClicked(evt);
@@ -373,6 +386,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         etiPuttanesca.setForeground(new java.awt.Color(255, 255, 255));
         etiPuttanesca.setText("Puttanesca");
+        etiPuttanesca.setToolTipText("Clic aqui para pedir");
         etiPuttanesca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 etiPuttanescaMouseClicked(evt);
@@ -389,7 +403,8 @@ public final class VentanaMenu extends javax.swing.JFrame {
         getContentPane().add(precioPuttanesca, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 440, 40, -1));
 
         etiBolognese.setForeground(new java.awt.Color(255, 255, 255));
-        etiBolognese.setText("Bolognese");
+        etiBolognese.setText("Boloñesa");
+        etiBolognese.setToolTipText("Clic aqui para pedir");
         etiBolognese.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 etiBologneseMouseClicked(evt);
@@ -407,6 +422,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         etiAmatriciana.setForeground(new java.awt.Color(255, 255, 255));
         etiAmatriciana.setText("Amatriciana");
+        etiAmatriciana.setToolTipText("Clic aqui para pedir");
         etiAmatriciana.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 etiAmatricianaMouseClicked(evt);
@@ -423,7 +439,8 @@ public final class VentanaMenu extends javax.swing.JFrame {
         getContentPane().add(precioAmatriciana, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 520, -1, -1));
 
         etiFondo.setBackground(new java.awt.Color(51, 51, 51));
-        getContentPane().add(etiFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
+        etiFondo.setToolTipText("Click en un plato para ordenar");
+        getContentPane().add(etiFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -611,9 +628,9 @@ public final class VentanaMenu extends javax.swing.JFrame {
         producto.nombre=etiTagliatelle.getText();
         producto.precio=Float.parseFloat(precioTagliatelle.getText());
         
-        producto.ingredientes[0]="Albahaca";
-        producto.ingredientes[1]="Alcachofa";
-        producto.ingredientes[2]="Champiñones";
+        producto.ingredientes[0]="Queso Parmesano";
+        producto.ingredientes[1]="Salsa cremosa";
+        
         
         
          VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
@@ -629,9 +646,9 @@ public final class VentanaMenu extends javax.swing.JFrame {
         producto.nombre=etiMarinara.getText();
         producto.precio=Float.parseFloat(precioMarinara.getText());
         
-        producto.ingredientes[0]="Albahaca";
-        producto.ingredientes[1]="Alcachofa";
-        producto.ingredientes[2]="Champiñones";
+        producto.ingredientes[0]="Calamar";
+        producto.ingredientes[1]="Mejillones";
+        producto.ingredientes[2]="Langostinos";
         
         
          VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
@@ -647,9 +664,8 @@ public final class VentanaMenu extends javax.swing.JFrame {
         producto.nombre=etiPuttanesca.getText();
         producto.precio=Float.parseFloat(precioPuttanesca.getText());
         
-        producto.ingredientes[0]="Albahaca";
-        producto.ingredientes[1]="Alcachofa";
-        producto.ingredientes[2]="Champiñones";
+        producto.ingredientes[0]="Aceituna negra";
+        producto.ingredientes[1]="Guindilla";
         
         
          VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
@@ -666,8 +682,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         producto.precio=Float.parseFloat(precioBolognese.getText());
         
         producto.ingredientes[0]="Albahaca";
-        producto.ingredientes[1]="Alcachofa";
-        producto.ingredientes[2]="Champiñones";
+        producto.ingredientes[1]="Queso parmesano";
         
         
          VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
@@ -683,9 +698,8 @@ public final class VentanaMenu extends javax.swing.JFrame {
         producto.nombre=etiAmatriciana.getText();
         producto.precio=Float.parseFloat(precioAmatriciana.getText());
         
-        producto.ingredientes[0]="Albahaca";
-        producto.ingredientes[1]="Alcachofa";
-        producto.ingredientes[2]="Champiñones";
+        producto.ingredientes[0]="Papada de cerdo (guanciale)";
+        producto.ingredientes[1]="Queso pecorino";
         
         
          VentanaVentaComida vistaplato = new VentanaVentaComida(producto);

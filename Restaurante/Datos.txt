@@ -233,3 +233,28 @@ DATOS CLIENTE
 Nombre: dasfsas
 Documento: 2312312
 
+DATOS CLIENTE
+
+Nombre: ksdnfiewj
+Documento: 124324
+
+DATOS CLIENTE
+
+Nombre: gneriug
+Documento: 132432
+
+DATOS CLIENTE
+
+Nombre: jbiubu
+Documento: 24234
+
+DATOS CLIENTE
+
+Nombre: Luis Martinez
+Documento: 13432
+
+DATOS CLIENTE
+
+Nombre: fjnweiuf
+Documento: 13242
+

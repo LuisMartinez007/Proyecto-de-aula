@@ -63,8 +63,7 @@ public class VentanaVentaBebida extends javax.swing.JDialog {
                 etiBebidaMouseClicked(evt);
             }
         });
-        getContentPane().add(etiBebida, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 220, 20));
-        etiBebida.getAccessibleContext().setAccessibleName("");
+        getContentPane().add(etiBebida, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 220, 30));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Precio:");
