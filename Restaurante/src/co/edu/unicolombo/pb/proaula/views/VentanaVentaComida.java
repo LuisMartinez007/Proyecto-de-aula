@@ -24,7 +24,6 @@ public class VentanaVentaComida extends javax.swing.JDialog {
      */ 
     VentanaVentaComida vistaplato;
     float cantidad = 0;
-    float subtotal = 0;
     Producto producto;
     
     public VentanaVentaComida(Producto producto) {
@@ -35,7 +34,6 @@ public class VentanaVentaComida extends javax.swing.JDialog {
         tercerIngrediente.setText(producto.ingredientes[2]);
         SetImageLabel(jLabel1,"src/imagenes/fondo_cuenta.jpg");
         etiPrecio.setText("$"+producto.precio);
-        subtotal = producto.precio;
         this.producto = producto;
     }
 

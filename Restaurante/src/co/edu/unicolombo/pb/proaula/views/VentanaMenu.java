@@ -58,16 +58,16 @@ public final class VentanaMenu extends javax.swing.JFrame {
         pizzaCapricciosa = new javax.swing.JLabel();
         precPizzaCapricciosa = new javax.swing.JLabel();
         signoPrecio2 = new javax.swing.JLabel();
-        PizzaFruttidimare = new javax.swing.JLabel();
+        pizzaFruttidimare = new javax.swing.JLabel();
         precPizzaFruttidimare = new javax.swing.JLabel();
         signoPrecio3 = new javax.swing.JLabel();
-        PizzaBoscaiola = new javax.swing.JLabel();
+        pizzaBoscaiola = new javax.swing.JLabel();
         precPizzaBoscaiola = new javax.swing.JLabel();
         signoPrecio4 = new javax.swing.JLabel();
         etiLimonada = new javax.swing.JLabel();
         precioLimonada = new javax.swing.JLabel();
         signoPrecio5 = new javax.swing.JLabel();
-        etiCocala = new javax.swing.JLabel();
+        etiCocacola = new javax.swing.JLabel();
         precioCocacola = new javax.swing.JLabel();
         signoPrecio6 = new javax.swing.JLabel();
         etiPepsi = new javax.swing.JLabel();
@@ -151,14 +151,14 @@ public final class VentanaMenu extends javax.swing.JFrame {
         signoPrecio2.setText("...$");
         getContentPane().add(signoPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, -1, 20));
 
-        PizzaFruttidimare.setForeground(new java.awt.Color(255, 255, 255));
-        PizzaFruttidimare.setText("Pizza frutti di mare");
-        PizzaFruttidimare.addMouseListener(new java.awt.event.MouseAdapter() {
+        pizzaFruttidimare.setForeground(new java.awt.Color(255, 255, 255));
+        pizzaFruttidimare.setText("Pizza frutti di mare");
+        pizzaFruttidimare.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PizzaFruttidimareMouseClicked(evt);
+                pizzaFruttidimareMouseClicked(evt);
             }
         });
-        getContentPane().add(PizzaFruttidimare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 110, 20));
+        getContentPane().add(pizzaFruttidimare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 110, 20));
 
         precPizzaFruttidimare.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         precPizzaFruttidimare.setForeground(new java.awt.Color(255, 255, 255));
@@ -170,14 +170,14 @@ public final class VentanaMenu extends javax.swing.JFrame {
         signoPrecio3.setText("...$");
         getContentPane().add(signoPrecio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, -1, 20));
 
-        PizzaBoscaiola.setForeground(new java.awt.Color(255, 255, 255));
-        PizzaBoscaiola.setText("Pizza boscaiola");
-        PizzaBoscaiola.addMouseListener(new java.awt.event.MouseAdapter() {
+        pizzaBoscaiola.setForeground(new java.awt.Color(255, 255, 255));
+        pizzaBoscaiola.setText("Pizza boscaiola");
+        pizzaBoscaiola.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PizzaBoscaiolaMouseClicked(evt);
+                pizzaBoscaiolaMouseClicked(evt);
             }
         });
-        getContentPane().add(PizzaBoscaiola, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 100, 20));
+        getContentPane().add(pizzaBoscaiola, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 100, 20));
 
         precPizzaBoscaiola.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         precPizzaBoscaiola.setForeground(new java.awt.Color(255, 255, 255));
@@ -191,6 +191,11 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         etiLimonada.setForeground(new java.awt.Color(255, 255, 255));
         etiLimonada.setText("Limonada");
+        etiLimonada.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                etiLimonadaMouseClicked(evt);
+            }
+        });
         getContentPane().add(etiLimonada, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 90, 20));
 
         precioLimonada.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -203,9 +208,14 @@ public final class VentanaMenu extends javax.swing.JFrame {
         signoPrecio5.setText("...$");
         getContentPane().add(signoPrecio5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, -1, 20));
 
-        etiCocala.setForeground(new java.awt.Color(255, 255, 255));
-        etiCocala.setText("Coca cola");
-        getContentPane().add(etiCocala, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, 90, 20));
+        etiCocacola.setForeground(new java.awt.Color(255, 255, 255));
+        etiCocacola.setText("Coca cola");
+        etiCocacola.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                etiCocacolaMouseClicked(evt);
+            }
+        });
+        getContentPane().add(etiCocacola, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, 90, 20));
 
         precioCocacola.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         precioCocacola.setForeground(new java.awt.Color(255, 255, 255));
@@ -219,6 +229,11 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         etiPepsi.setForeground(new java.awt.Color(255, 255, 255));
         etiPepsi.setText("Pepsi");
+        etiPepsi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                etiPepsiMouseClicked(evt);
+            }
+        });
         getContentPane().add(etiPepsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 480, 90, 20));
 
         precioPepsi.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -233,6 +248,11 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         etiAgua.setForeground(new java.awt.Color(255, 255, 255));
         etiAgua.setText("Agua");
+        etiAgua.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                etiAguaMouseClicked(evt);
+            }
+        });
         getContentPane().add(etiAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 520, 90, 20));
 
         precioAgua.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -247,6 +267,11 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         etiAguamineral.setForeground(new java.awt.Color(255, 255, 255));
         etiAguamineral.setText("Agua mineral");
+        etiAguamineral.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                etiAguamineralMouseClicked(evt);
+            }
+        });
         getContentPane().add(etiAguamineral, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 560, 90, 20));
 
         precioAguamineral.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -261,6 +286,11 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         etiTelimon.setForeground(new java.awt.Color(255, 255, 255));
         etiTelimon.setText("Te de limon");
+        etiTelimon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                etiTelimonMouseClicked(evt);
+            }
+        });
         getContentPane().add(etiTelimon, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, 90, 20));
 
         precioteLimon.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -306,6 +336,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         VentanaPrincipal ventana =new VentanaPrincipal();
         ventana.setVisible(true);
+        
         this.dispose();
             
     }//GEN-LAST:event_btnVolverActionPerformed
@@ -367,17 +398,110 @@ public final class VentanaMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_pizzaCapricciosaMouseClicked
 
-    private void PizzaFruttidimareMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PizzaFruttidimareMouseClicked
+    private void pizzaFruttidimareMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pizzaFruttidimareMouseClicked
         // TODO add your handling code here:
+        Producto producto = new Producto();
+        producto.ingredientes= new String[3];
+        producto.nombre=pizzaFruttidimare.getText();
+        producto.precio=Float.parseFloat(precPizzaFruttidimare.getText());
         
-    }//GEN-LAST:event_PizzaFruttidimareMouseClicked
+        producto.ingredientes[0]="jamon";
+        producto.ingredientes[1]="pepperoni";
+        producto.ingredientes[2]="champiñones";
+        
+        
+         VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
+        
+        vistaplato.setLocationRelativeTo(this);
+        vistaplato.setVisible(true);
+        
+    }//GEN-LAST:event_pizzaFruttidimareMouseClicked
 
-    private void PizzaBoscaiolaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PizzaBoscaiolaMouseClicked
+    private void pizzaBoscaiolaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pizzaBoscaiolaMouseClicked
+        Producto producto = new Producto();
+        producto.ingredientes= new String[3];
+        producto.nombre=pizzaBoscaiola.getText();
+        producto.precio=Float.parseFloat(precPizzaBoscaiola.getText());
         
-    }//GEN-LAST:event_PizzaBoscaiolaMouseClicked
+        producto.ingredientes[0]="pimientos";
+        producto.ingredientes[1]="perejil";
+        producto.ingredientes[2]="champiñones";
+        
+        
+         VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
+        
+        vistaplato.setLocationRelativeTo(this);
+        vistaplato.setVisible(true);
+    }//GEN-LAST:event_pizzaBoscaiolaMouseClicked
+
+    private void etiTelimonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiTelimonMouseClicked
+        // TODO add your handling code here:
+        Producto producto = new Producto();
+        producto.nombre=etiTelimon.getText();
+        producto.precio=Float.parseFloat(precioteLimon.getText());
+        
+        
+         VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
+        
+        vistaplato.setLocationRelativeTo(this);
+        vistaplato.setVisible(true);
+    }//GEN-LAST:event_etiTelimonMouseClicked
+
+    private void etiLimonadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiLimonadaMouseClicked
+        // TODO add your handling code here:
+        Producto producto = new Producto();
+        producto.nombre=etiLimonada.getText();
+        producto.precio=Float.parseFloat(precioLimonada.getText());
+         VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
+        
+        vistaplato.setLocationRelativeTo(this);
+        vistaplato.setVisible(true);
+    }//GEN-LAST:event_etiLimonadaMouseClicked
+
+    private void etiCocacolaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiCocacolaMouseClicked
+        // TODO add your handling code here:
+        Producto producto = new Producto();
+        producto.nombre=etiCocacola.getText();
+        producto.precio=Float.parseFloat(precioCocacola.getText());
+         VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
+        
+        vistaplato.setLocationRelativeTo(this);
+        vistaplato.setVisible(true);
+    }//GEN-LAST:event_etiCocacolaMouseClicked
+
+    private void etiPepsiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiPepsiMouseClicked
+        // TODO add your handling code here:
+        Producto producto = new Producto();
+        producto.nombre=etiPepsi.getText();
+        producto.precio=Float.parseFloat(precioPepsi.getText());
+         VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
+        
+        vistaplato.setLocationRelativeTo(this);
+        vistaplato.setVisible(true);
+    }//GEN-LAST:event_etiPepsiMouseClicked
+
+    private void etiAguaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiAguaMouseClicked
+        // TODO add your handling code here:
+        Producto producto = new Producto();
+        producto.nombre=etiAgua.getText();
+        producto.precio=Float.parseFloat(precioAgua.getText());
+         VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
+        
+        vistaplato.setLocationRelativeTo(this);
+        vistaplato.setVisible(true);
+    }//GEN-LAST:event_etiAguaMouseClicked
+
+    private void etiAguamineralMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiAguamineralMouseClicked
+        // TODO add your handling code here:
+        Producto producto = new Producto();
+        producto.nombre=etiAguamineral.getText();
+        producto.precio=Float.parseFloat(precioAguamineral.getText());
+         VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
+        
+        vistaplato.setLocationRelativeTo(this);
+        vistaplato.setVisible(true);
+    }//GEN-LAST:event_etiAguamineralMouseClicked
     
-    
- 
     public void SetImageLabel(JLabel nombrelabel, String root){
         ImageIcon imagen = new ImageIcon(root); 
         Icon icon = new ImageIcon(
@@ -422,20 +546,20 @@ public final class VentanaMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel PizzaBoscaiola;
-    private javax.swing.JLabel PizzaFruttidimare;
     private javax.swing.JButton botonFactura;
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel etiAgua;
     private javax.swing.JLabel etiAguamineral;
-    private javax.swing.JLabel etiCocala;
+    private javax.swing.JLabel etiCocacola;
     private javax.swing.JLabel etiFondo;
     private javax.swing.JLabel etiImangenBebidas;
     private javax.swing.JLabel etiLimonada;
     private javax.swing.JLabel etiPepsi;
     private javax.swing.JLabel etiPizza;
     private javax.swing.JLabel etiTelimon;
+    private javax.swing.JLabel pizzaBoscaiola;
     private javax.swing.JLabel pizzaCapricciosa;
+    private javax.swing.JLabel pizzaFruttidimare;
     private javax.swing.JLabel pizzaMargarita;
     private javax.swing.JLabel pizzaNapolitana;
     private javax.swing.JLabel precPizzaBoscaiola;

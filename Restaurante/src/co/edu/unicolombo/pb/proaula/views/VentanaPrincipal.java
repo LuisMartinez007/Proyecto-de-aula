@@ -161,10 +161,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-
+        
+        
         VentanaMenu menu = new VentanaMenu();
         menu.setTitle("SALUDOS " + VentanaPrincipal.gestionVenta.getVenta().cliente.nombre);
-        this.setVisible(false);
         menu.setLocationRelativeTo(null);
         menu.setVisible(true);
         JOptionPane.showMessageDialog(null, "Para seleccionar un plato presione su nombre");
