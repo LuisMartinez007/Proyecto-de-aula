@@ -115,7 +115,7 @@ public class VentanaVentaComida extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
-        getContentPane().add(etiPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 90, 20));
+        getContentPane().add(etiPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 90, 20));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 430, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N

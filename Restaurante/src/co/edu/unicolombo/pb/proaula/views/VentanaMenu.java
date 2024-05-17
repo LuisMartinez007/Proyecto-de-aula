@@ -153,6 +153,11 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         PizzaFruttidimare.setForeground(new java.awt.Color(255, 255, 255));
         PizzaFruttidimare.setText("Pizza frutti di mare");
+        PizzaFruttidimare.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PizzaFruttidimareMouseClicked(evt);
+            }
+        });
         getContentPane().add(PizzaFruttidimare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 110, 20));
 
         precPizzaFruttidimare.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -167,6 +172,11 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         PizzaBoscaiola.setForeground(new java.awt.Color(255, 255, 255));
         PizzaBoscaiola.setText("Pizza boscaiola");
+        PizzaBoscaiola.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PizzaBoscaiolaMouseClicked(evt);
+            }
+        });
         getContentPane().add(PizzaBoscaiola, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 100, 20));
 
         precPizzaBoscaiola.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -356,6 +366,15 @@ public final class VentanaMenu extends javax.swing.JFrame {
         vistaplato.setVisible(true);
         
     }//GEN-LAST:event_pizzaCapricciosaMouseClicked
+
+    private void PizzaFruttidimareMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PizzaFruttidimareMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_PizzaFruttidimareMouseClicked
+
+    private void PizzaBoscaiolaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PizzaBoscaiolaMouseClicked
+        
+    }//GEN-LAST:event_PizzaBoscaiolaMouseClicked
     
     
  
