@@ -17,17 +17,17 @@ import javax.swing.JOptionPane;
  *
  * @author Usuario
  */
-public class VentanaVenta extends javax.swing.JDialog {
+public class VentanaVentaComida extends javax.swing.JDialog {
 
     /**
      * Creates new form VistaPlato
      */ 
-    VentanaVenta vistaplato;
+    VentanaVentaComida vistaplato;
     float cantidad = 0;
     float subtotal = 0;
     Producto producto;
     
-    public VentanaVenta(Producto producto) {
+    public VentanaVentaComida(Producto producto) {
         initComponents();
         plato.setText(producto.nombre);
         primerIngrediente.setText(producto.ingredientes[0]);
@@ -53,20 +53,20 @@ public class VentanaVenta extends javax.swing.JDialog {
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         etiPrecio = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         plato.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        getContentPane().add(plato, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 240, 24));
+        getContentPane().add(plato, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 240, 24));
 
         etiCantidad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         etiCantidad.setText("¿Cuantas desea?");
-        getContentPane().add(etiCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 120, -1));
+        getContentPane().add(etiCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 120, -1));
 
         cantidadProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5" }));
         cantidadProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +74,7 @@ public class VentanaVenta extends javax.swing.JDialog {
                 cantidadProductoActionPerformed(evt);
             }
         });
-        getContentPane().add(cantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 45, -1));
+        getContentPane().add(cantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 45, -1));
 
         primerIngrediente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -86,15 +86,15 @@ public class VentanaVenta extends javax.swing.JDialog {
                 primerIngredienteActionPerformed(evt);
             }
         });
-        getContentPane().add(primerIngrediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
+        getContentPane().add(primerIngrediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
         segundoIngrediente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 segundoIngredienteActionPerformed(evt);
             }
         });
-        getContentPane().add(segundoIngrediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
-        getContentPane().add(tercerIngrediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, -1, -1));
+        getContentPane().add(segundoIngrediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        getContentPane().add(tercerIngrediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
 
         btnAceptar.setBackground(new java.awt.Color(153, 255, 153));
         btnAceptar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -104,7 +104,7 @@ public class VentanaVenta extends javax.swing.JDialog {
                 btnAceptarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 400, -1, -1));
+        getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
 
         btnCancelar.setBackground(new java.awt.Color(255, 102, 102));
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -114,22 +114,18 @@ public class VentanaVenta extends javax.swing.JDialog {
                 btnCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, -1, -1));
-        getContentPane().add(etiPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 90, 20));
+        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
+        getContentPane().add(etiPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 90, 20));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 430, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Precio:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 50, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 50, -1));
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Selecione el ingrediente que desea remover\n(Por cada ingrediente que remueva se le \ndescuenta $2000 al precio total).");
-        jTextArea1.setBorder(null);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 330, 90));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 450));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("Ingredientes que desea remover");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -154,15 +150,7 @@ public class VentanaVenta extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "La cantidad no puede ser 0");
         
         }else{
-            if(primerIngrediente.isSelected()){
-            subtotal = subtotal - 2000;
-        }
-        if(segundoIngrediente.isSelected()){
-            subtotal = subtotal - 2000;
-        }
-        if(tercerIngrediente.isSelected()){
-               subtotal = subtotal - 2000;
-        }
+            
             ItemVenta item = new ItemVenta();
             item.producto = producto;
             item.candidad = cantidad;
@@ -202,14 +190,18 @@ public class VentanaVenta extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaVentaComida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaVentaComida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaVentaComida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaVentaComida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -218,7 +210,7 @@ public class VentanaVenta extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VentanaVenta dialog = new VentanaVenta(null);
+                VentanaVentaComida dialog = new VentanaVentaComida(null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -238,8 +230,8 @@ public class VentanaVenta extends javax.swing.JDialog {
     private javax.swing.JLabel etiPrecio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JSeparator jSeparator1;
     public static javax.swing.JLabel plato;
     private javax.swing.JCheckBox primerIngrediente;
     private javax.swing.JCheckBox segundoIngrediente;

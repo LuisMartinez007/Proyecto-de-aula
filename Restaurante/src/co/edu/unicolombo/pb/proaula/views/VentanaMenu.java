@@ -313,7 +313,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         producto.ingredientes[2]="Hierbas";
         
         
-        VentanaVenta vistaplato = new VentanaVenta(producto);
+        VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
         
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
@@ -333,7 +333,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         producto.ingredientes[2]="Oregano";
         
         
-           VentanaVenta vistaplato = new VentanaVenta(producto);
+           VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
         
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
@@ -350,7 +350,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         producto.ingredientes[2]="Champiñones";
         
         
-         VentanaVenta vistaplato = new VentanaVenta(producto);
+         VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
         
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
