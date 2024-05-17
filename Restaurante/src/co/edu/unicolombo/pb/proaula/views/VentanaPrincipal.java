@@ -1,18 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package co.edu.unicolombo.pb.proaula.views;
 
 import co.edu.unicolombo.pb.proaula.conceptos.Cliente;
+import co.edu.unicolombo.pb.proaula.crud.GestionVentas;
+import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
+import java.awt.Toolkit;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -20,24 +19,23 @@ import javax.swing.JOptionPane;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
-public VentanaPrincipal() {
+    public static GestionVentas gestionVenta;
+
+    public VentanaPrincipal() {
+
         initComponents();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        int x = (int) ((screenSize.getWidth() - this.getWidth()) / 2);
+        int y = (int) ((screenSize.getHeight() - this.getHeight()) / 2);
+
+        this.setLocation(x, y);
         btnSiguiente.setEnabled(false);
-        
-        
-        this.addComponentListener(new ComponentAdapter() {
-            @Override
-    public void componentResized(ComponentEvent e) {
-       
-        ImageIcon icono = new ImageIcon("src/imagenes/comida italiana.jpg");
-        Image imagen = icono.getImage().getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
-        
-        // Establecer la imagen escalada en el JLabel
-        etiImagen.setIcon(new ImageIcon(imagen));
+
+        SetImageLabel(etiImagen, "src/imagenes/comida italiana.jpg");
+        gestionVenta = new GestionVentas();
     }
-});
-    }
-   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,37 +59,38 @@ public VentanaPrincipal() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bambino");
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bienvenida.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         bienvenida.setForeground(new java.awt.Color(255, 255, 255));
         bienvenida.setText("Registro del cliente");
         bienvenida.setAlignmentX(0.5F);
-        getContentPane().add(bienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, -1, -1));
+        getContentPane().add(bienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, -1, -1));
 
         etiNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         etiNombre.setForeground(new java.awt.Color(255, 255, 255));
         etiNombre.setText("Nombre completo:");
-        getContentPane().add(etiNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 107, 24));
+        getContentPane().add(etiNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 107, 24));
 
         nombreText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreTextActionPerformed(evt);
             }
         });
-        getContentPane().add(nombreText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 218, 31));
+        getContentPane().add(nombreText, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 218, 31));
 
         documentoText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 documentoTextActionPerformed(evt);
             }
         });
-        getContentPane().add(documentoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 218, 31));
+        getContentPane().add(documentoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 218, 31));
 
         etiDocumento.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         etiDocumento.setForeground(new java.awt.Color(255, 255, 255));
         etiDocumento.setText("Número documento:");
-        getContentPane().add(etiDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 126, 24));
+        getContentPane().add(etiDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 126, 24));
 
         btnSiguiente.setBackground(new java.awt.Color(153, 255, 153));
         btnSiguiente.setText("Siguiente");
@@ -100,7 +99,7 @@ public VentanaPrincipal() {
                 btnSiguienteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
+        getContentPane().add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, -1, -1));
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -108,11 +107,11 @@ public VentanaPrincipal() {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, -1, -1));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, -1, -1));
 
         etiMensaje2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         etiMensaje2.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(etiMensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 198, 25));
+        getContentPane().add(etiMensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 460, 198, 25));
 
         textMensaje.setEditable(false);
         textMensaje.setColumns(20);
@@ -120,39 +119,55 @@ public VentanaPrincipal() {
         textMensaje.setBorder(null);
         jScrollPane1.setViewportView(textMensaje);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 326, 92));
-        getContentPane().add(etiImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 550));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 326, 92));
+        getContentPane().add(etiImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        Cliente.nombre = nombreText.getText();
-        Cliente.documento = documentoText.getText();
-        if(Cliente.nombre.isEmpty() || !validarCaracteres(Cliente.nombre) || Cliente.nombre.charAt(0)==' '){
-            JOptionPane.showMessageDialog(null,"Nombre invalido.");
+        Cliente cliente = new Cliente();
+        cliente.nombre = nombreText.getText();
+        cliente.documento = documentoText.getText();
+        if (cliente.nombre.isEmpty() || !validarCaracteres(cliente.nombre) || cliente.nombre.charAt(0) == ' ') {
+            JOptionPane.showMessageDialog(null, "Nombre invalido.");
             return;
         }
-        
-        if(!validarNumeros(Cliente.documento) || Cliente.documento.isEmpty()){
+
+        if (!validarNumeros(cliente.documento) || cliente.documento.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Número de documento invalido.");
             return;
         }
-        
-        textMensaje.setText("Sr(a) "+Cliente.nombre+"\nEstamos muy felices de atenderlo(a) el día de hoy.\n" +"\nNumero de identificación del cliente: "+Cliente.documento);
+
+        textMensaje.setText("Sr(a) " + cliente.nombre + "\nEstamos muy felices de atenderlo(a) el día de hoy.\n" + "\nNumero de identificación del cliente: " + cliente.documento);
         etiMensaje2.setText("Registro realizado con exito");
         
+        gestionVenta.setCliente(cliente);
+        
         btnSiguiente.setEnabled(true);
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("Datos.txt", true));
+            writer.write("DATOS CLIENTE");
+            writer.newLine();
+            writer.write("\nNombre: " + cliente.nombre + "\nDocumento: " + cliente.documento + "\n");
+            writer.write("");
+            writer.newLine();
+
+            writer.close();
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo.");
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        
-    MenuRestaurante menu = new MenuRestaurante();
-    
-            this.setVisible(false);
+
+        VentanaMenu menu = new VentanaMenu();
+        menu.setTitle("SALUDOS " + VentanaPrincipal.gestionVenta.getVenta().cliente.nombre);
+        this.setVisible(false);
         menu.setLocationRelativeTo(null);
         menu.setVisible(true);
-        
+        JOptionPane.showMessageDialog(null, "Para seleccionar un plato presione su nombre");
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void nombreTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTextActionPerformed
@@ -164,17 +179,24 @@ public VentanaPrincipal() {
         // TODO add your handling code here:
         btnGuardar.doClick();
     }//GEN-LAST:event_documentoTextActionPerformed
-    
-    
-    public static boolean validarCaracteres(String datos){
+
+    public void SetImageLabel(JLabel nombrelabel, String root) {
+        ImageIcon imagen = new ImageIcon(root);
+        Icon icon = new ImageIcon(
+                imagen.getImage().getScaledInstance(nombrelabel.getWidth(), nombrelabel.getHeight(), Image.SCALE_DEFAULT));
+        nombrelabel.setIcon(icon);
+        this.repaint();
+    }
+
+    public static boolean validarCaracteres(String datos) {
         return datos.matches("[a-z A-Z]*");
     }
-    public static boolean validarNumeros(String datos){
+
+    public static boolean validarNumeros(String datos) {
         return datos.matches("[0-9]*");
     }
-   
-// Agrega un ComponentListener a tu JFrame para detectar cambios de tamaño
 
+// Agrega un ComponentListener a tu JFrame para detectar cambios de tamaño
     /**
      * @param args the command line arguments
      */

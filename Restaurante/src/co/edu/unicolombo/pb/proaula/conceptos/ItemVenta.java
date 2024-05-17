@@ -6,8 +6,15 @@ package co.edu.unicolombo.pb.proaula.conceptos;
 
 /**
  *
- * @author Usuario
+ * @author yulin
  */
 public class ItemVenta {
+    public Producto producto;
+    public float candidad;
+    public Venta venta;
+    public float subtotal;
     
+    public void calcularSubtotal(){
+        subtotal = producto.precio * candidad;
+    };
 }

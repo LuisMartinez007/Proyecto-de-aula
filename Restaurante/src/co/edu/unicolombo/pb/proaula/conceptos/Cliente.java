@@ -10,6 +10,6 @@ package co.edu.unicolombo.pb.proaula.conceptos;
  */
 public class Cliente {
 
-    public static String nombre;
-    public static String documento;
+    public  String nombre;
+    public  String documento;
 }

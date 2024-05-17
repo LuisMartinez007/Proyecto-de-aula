@@ -4,11 +4,20 @@
  */
 package co.edu.unicolombo.pb.proaula.conceptos;
 
+import java.util.Date;
+import java.util.HashMap;
+
 
 /**
  *
  * @author Usuario
  */
 public class Venta {
+//    public  float total;
+//    public  float subtotal;
+//    public  float propina;
+    public Cliente cliente;
+    public Date fecha;
+    public HashMap<String, ItemVenta> itemsVenta;
     
 }

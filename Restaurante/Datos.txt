@@ -1,0 +1,80 @@
+DATOS CLIENTE
+
+Nombre: isas
+Documento: 54987
+
+DATOS CLIENTE
+
+Nombre: eriais
+Documento: 1111222
+
+DATOS CLIENTE
+
+Nombre: rrrrrr
+Documento: 122231
+
+DATOS CLIENTE
+
+Nombre: eeeeee
+Documento: 11111
+
+DATOS CLIENTE
+
+Nombre: eee
+Documento: 2222
+
+DATOS CLIENTE
+
+Nombre: gggggg
+Documento: 44545466
+
+DATOS CLIENTE
+
+Nombre: gggggg
+Documento: 44545466
+
+DATOS CLIENTE
+
+Nombre: wwww
+Documento: 11111
+
+DATOS CLIENTE
+
+Nombre: tttttt
+Documento: 55555
+
+DATOS CLIENTE
+
+Nombre: qqqq
+Documento: 11111
+
+DATOS CLIENTE
+
+Nombre: tttttt
+Documento: 8686686
+
+DATOS CLIENTE
+
+Nombre: luis
+Documento: 134121
+
+DATOS CLIENTE
+
+Nombre: gttgt
+Documento: 75576
+
+DATOS CLIENTE
+
+Nombre: sdasd
+Documento: 3
+
+DATOS CLIENTE
+
+Nombre: john 
+Documento: 123
+
+DATOS CLIENTE
+
+Nombre: isac pacheco
+Documento: 12321
+

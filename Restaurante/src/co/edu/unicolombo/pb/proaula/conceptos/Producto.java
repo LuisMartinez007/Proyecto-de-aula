@@ -9,5 +9,8 @@ package co.edu.unicolombo.pb.proaula.conceptos;
  * @author Usuario
  */
 public class Producto {
-    
+    public  String nombre;
+    public  String[] ingredientes;
+    public  float precio=0;
+//    public static int cantidad;
 }
