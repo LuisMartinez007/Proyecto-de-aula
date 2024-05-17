@@ -198,3 +198,38 @@ DATOS CLIENTE
 Nombre: asubuhas
 Documento: 2345678
 
+DATOS CLIENTE
+
+Nombre: Alvaro
+Documento: 1324
+
+DATOS CLIENTE
+
+Nombre: Alvaro
+Documento: 23
+
+DATOS CLIENTE
+
+Nombre: dsa
+Documento: 123
+
+DATOS CLIENTE
+
+Nombre: sad
+Documento: 1332
+
+DATOS CLIENTE
+
+Nombre: sadffhdsa
+Documento: 212342
+
+DATOS CLIENTE
+
+Nombre: qawesdghj
+Documento: 2345678
+
+DATOS CLIENTE
+
+Nombre: dasfsas
+Documento: 2312312
+
