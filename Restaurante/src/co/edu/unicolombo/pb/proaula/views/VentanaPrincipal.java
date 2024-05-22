@@ -68,10 +68,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         bienvenida.setAlignmentX(0.5F);
         getContentPane().add(bienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, -1, -1));
 
-        etiNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        etiNombre.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         etiNombre.setForeground(new java.awt.Color(255, 255, 255));
         etiNombre.setText("Nombre completo:");
-        getContentPane().add(etiNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 107, 24));
+        getContentPane().add(etiNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 160, 140, 24));
 
         nombreText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,10 +87,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(documentoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 218, 31));
 
-        etiDocumento.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        etiDocumento.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         etiDocumento.setForeground(new java.awt.Color(255, 255, 255));
         etiDocumento.setText("Número documento:");
-        getContentPane().add(etiDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 126, 24));
+        getContentPane().add(etiDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 210, 140, 24));
 
         btnSiguiente.setBackground(new java.awt.Color(153, 255, 153));
         btnSiguiente.setText("Siguiente");
@@ -109,17 +109,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, -1, -1));
 
-        etiMensaje2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        etiMensaje2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         etiMensaje2.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(etiMensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 460, 198, 25));
+        getContentPane().add(etiMensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, 220, 25));
 
         textMensaje.setEditable(false);
         textMensaje.setColumns(20);
+        textMensaje.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         textMensaje.setRows(5);
         textMensaje.setBorder(null);
         jScrollPane1.setViewportView(textMensaje);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 326, 92));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 326, 110));
         getContentPane().add(etiImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 570));
 
         pack();
@@ -164,7 +165,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         
         VentanaMenu menu = new VentanaMenu();
-        menu.setTitle("SALUDOS " + VentanaPrincipal.gestionVenta.getVenta().cliente.nombre);
+        //menu.setTitle("SALUDOS " + VentanaPrincipal.gestionVenta.getVenta().cliente.nombre); 
         menu.setLocationRelativeTo(null);
         menu.setVisible(true);
         this.setVisible(false);

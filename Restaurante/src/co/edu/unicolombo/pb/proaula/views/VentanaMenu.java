@@ -35,7 +35,8 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
             this.setLocation(x, y);
          
-            
+        String saludo = "Saludos Sr(a)  " + VentanaPrincipal.gestionVenta.getVenta().cliente.nombre + " Bienvenidos a Bambino";
+        etiSaludo.setText(saludo);     
     }
     
 
@@ -101,115 +102,122 @@ public final class VentanaMenu extends javax.swing.JFrame {
         etiAmatriciana = new javax.swing.JLabel();
         signoPrecio15 = new javax.swing.JLabel();
         precioAmatriciana = new javax.swing.JLabel();
+        etiSaludo = new javax.swing.JLabel();
         etiFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Menu");
+        setTitle("Bambino");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(etiPizza, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 200, 120));
+        getContentPane().add(etiPizza, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 200, 120));
 
+        pizzaNapolitana.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         pizzaNapolitana.setForeground(new java.awt.Color(255, 255, 255));
-        pizzaNapolitana.setText("Pizza napolitana");
+        pizzaNapolitana.setText("Pizza Napolitana");
         pizzaNapolitana.setToolTipText("Clic aqui para pedir");
         pizzaNapolitana.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pizzaNapolitanaMouseClicked(evt);
             }
         });
-        getContentPane().add(pizzaNapolitana, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 110, 20));
+        getContentPane().add(pizzaNapolitana, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 120, 20));
 
-        precPizzaNapolitana.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        precPizzaNapolitana.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         precPizzaNapolitana.setForeground(new java.awt.Color(255, 255, 255));
         precPizzaNapolitana.setText("35000");
-        getContentPane().add(precPizzaNapolitana, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 40, 20));
+        getContentPane().add(precPizzaNapolitana, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, 40, 20));
 
-        signoPrecio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        signoPrecio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signoPrecio.setForeground(new java.awt.Color(255, 255, 255));
         signoPrecio.setText("...$");
-        getContentPane().add(signoPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, -1, 20));
-        getContentPane().add(etiImangenBebidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 200, 120));
+        getContentPane().add(signoPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, -1, 20));
+        getContentPane().add(etiImangenBebidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 200, 120));
 
+        pizzaMargarita.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         pizzaMargarita.setForeground(new java.awt.Color(255, 255, 255));
-        pizzaMargarita.setText("Pizza margarita");
+        pizzaMargarita.setText("Pizza Margarita");
         pizzaMargarita.setToolTipText("Clic aqui para pedir");
         pizzaMargarita.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pizzaMargaritaMouseClicked(evt);
             }
         });
-        getContentPane().add(pizzaMargarita, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 110, 20));
+        getContentPane().add(pizzaMargarita, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 110, 20));
 
-        precPizzaMargarita.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        precPizzaMargarita.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         precPizzaMargarita.setForeground(new java.awt.Color(255, 255, 255));
         precPizzaMargarita.setText("37000");
-        getContentPane().add(precPizzaMargarita, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 40, 20));
+        getContentPane().add(precPizzaMargarita, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 40, 20));
 
-        signoPrecio1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        signoPrecio1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signoPrecio1.setForeground(new java.awt.Color(255, 255, 255));
         signoPrecio1.setText("...$");
-        getContentPane().add(signoPrecio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, -1, 20));
+        getContentPane().add(signoPrecio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, -1, 20));
 
+        pizzaCapricciosa.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         pizzaCapricciosa.setForeground(new java.awt.Color(255, 255, 255));
-        pizzaCapricciosa.setText("Pizza capricciosa");
+        pizzaCapricciosa.setText("Pizza Capricciosa");
         pizzaCapricciosa.setToolTipText("Clic aqui para pedir");
         pizzaCapricciosa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pizzaCapricciosaMouseClicked(evt);
             }
         });
-        getContentPane().add(pizzaCapricciosa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 110, 20));
+        getContentPane().add(pizzaCapricciosa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 140, 20));
 
-        precPizzaCapricciosa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        precPizzaCapricciosa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         precPizzaCapricciosa.setForeground(new java.awt.Color(255, 255, 255));
         precPizzaCapricciosa.setText("42000");
-        getContentPane().add(precPizzaCapricciosa, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 440, 40, 20));
+        getContentPane().add(precPizzaCapricciosa, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 40, 20));
 
-        signoPrecio2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        signoPrecio2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signoPrecio2.setForeground(new java.awt.Color(255, 255, 255));
         signoPrecio2.setText("...$");
-        getContentPane().add(signoPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, -1, 20));
+        getContentPane().add(signoPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, 20));
 
+        pizzaFruttidimare.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         pizzaFruttidimare.setForeground(new java.awt.Color(255, 255, 255));
-        pizzaFruttidimare.setText("Pizza frutti di mare");
+        pizzaFruttidimare.setText("Pizza Frutti di mare");
         pizzaFruttidimare.setToolTipText("Clic aqui para pedir");
         pizzaFruttidimare.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pizzaFruttidimareMouseClicked(evt);
             }
         });
-        getContentPane().add(pizzaFruttidimare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 110, 20));
+        getContentPane().add(pizzaFruttidimare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 140, 20));
 
-        precPizzaFruttidimare.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        precPizzaFruttidimare.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         precPizzaFruttidimare.setForeground(new java.awt.Color(255, 255, 255));
         precPizzaFruttidimare.setText("32000");
-        getContentPane().add(precPizzaFruttidimare, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, 40, 20));
+        getContentPane().add(precPizzaFruttidimare, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, 40, 20));
 
-        signoPrecio3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        signoPrecio3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signoPrecio3.setForeground(new java.awt.Color(255, 255, 255));
         signoPrecio3.setText("...$");
-        getContentPane().add(signoPrecio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, -1, 20));
+        getContentPane().add(signoPrecio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 500, -1, 20));
 
+        pizzaBoscaiola.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         pizzaBoscaiola.setForeground(new java.awt.Color(255, 255, 255));
-        pizzaBoscaiola.setText("Pizza boscaiola");
+        pizzaBoscaiola.setText("Pizza Boscaiola");
         pizzaBoscaiola.setToolTipText("Clic aqui para pedir");
         pizzaBoscaiola.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pizzaBoscaiolaMouseClicked(evt);
             }
         });
-        getContentPane().add(pizzaBoscaiola, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 100, 20));
+        getContentPane().add(pizzaBoscaiola, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 120, 20));
 
-        precPizzaBoscaiola.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        precPizzaBoscaiola.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         precPizzaBoscaiola.setForeground(new java.awt.Color(255, 255, 255));
         precPizzaBoscaiola.setText("34000");
-        getContentPane().add(precPizzaBoscaiola, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, 40, 20));
+        getContentPane().add(precPizzaBoscaiola, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 40, 20));
 
-        signoPrecio4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        signoPrecio4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signoPrecio4.setForeground(new java.awt.Color(255, 255, 255));
         signoPrecio4.setText("...$");
-        getContentPane().add(signoPrecio4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, -1, 20));
+        getContentPane().add(signoPrecio4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 540, -1, 20));
 
+        etiLimonada.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         etiLimonada.setForeground(new java.awt.Color(255, 255, 255));
         etiLimonada.setText("Limonada");
         etiLimonada.setToolTipText("Clic aqui para pedir");
@@ -218,18 +226,19 @@ public final class VentanaMenu extends javax.swing.JFrame {
                 etiLimonadaMouseClicked(evt);
             }
         });
-        getContentPane().add(etiLimonada, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 90, 20));
+        getContentPane().add(etiLimonada, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, 90, 20));
 
-        precioLimonada.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        precioLimonada.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         precioLimonada.setForeground(new java.awt.Color(255, 255, 255));
         precioLimonada.setText("15000");
-        getContentPane().add(precioLimonada, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 40, 20));
+        getContentPane().add(precioLimonada, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 420, 40, 20));
 
-        signoPrecio5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        signoPrecio5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signoPrecio5.setForeground(new java.awt.Color(255, 255, 255));
         signoPrecio5.setText("...$");
-        getContentPane().add(signoPrecio5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, -1, 20));
+        getContentPane().add(signoPrecio5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 420, -1, 20));
 
+        etiCocacola.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         etiCocacola.setForeground(new java.awt.Color(255, 255, 255));
         etiCocacola.setText("Coca cola");
         etiCocacola.setToolTipText("Clic aqui para pedir");
@@ -238,18 +247,19 @@ public final class VentanaMenu extends javax.swing.JFrame {
                 etiCocacolaMouseClicked(evt);
             }
         });
-        getContentPane().add(etiCocacola, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, 90, 20));
+        getContentPane().add(etiCocacola, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 460, 90, 20));
 
-        precioCocacola.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        precioCocacola.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         precioCocacola.setForeground(new java.awt.Color(255, 255, 255));
         precioCocacola.setText("12000");
-        getContentPane().add(precioCocacola, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 440, 40, 20));
+        getContentPane().add(precioCocacola, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 460, 40, 20));
 
-        signoPrecio6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        signoPrecio6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signoPrecio6.setForeground(new java.awt.Color(255, 255, 255));
         signoPrecio6.setText("...$");
-        getContentPane().add(signoPrecio6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 440, -1, 20));
+        getContentPane().add(signoPrecio6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 460, -1, 20));
 
+        etiPepsi.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         etiPepsi.setForeground(new java.awt.Color(255, 255, 255));
         etiPepsi.setText("Pepsi");
         etiPepsi.setToolTipText("Clic aqui para pedir");
@@ -258,18 +268,19 @@ public final class VentanaMenu extends javax.swing.JFrame {
                 etiPepsiMouseClicked(evt);
             }
         });
-        getContentPane().add(etiPepsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 480, 90, 20));
+        getContentPane().add(etiPepsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 500, 90, 20));
 
-        precioPepsi.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        precioPepsi.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         precioPepsi.setForeground(new java.awt.Color(255, 255, 255));
         precioPepsi.setText("12000");
-        getContentPane().add(precioPepsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 480, 40, 20));
+        getContentPane().add(precioPepsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 500, 40, 20));
 
-        signoPrecio7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        signoPrecio7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signoPrecio7.setForeground(new java.awt.Color(255, 255, 255));
         signoPrecio7.setText("...$");
-        getContentPane().add(signoPrecio7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 480, -1, 20));
+        getContentPane().add(signoPrecio7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 500, -1, 20));
 
+        etiAgua.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         etiAgua.setForeground(new java.awt.Color(255, 255, 255));
         etiAgua.setText("Agua");
         etiAgua.setToolTipText("Clic aqui para pedir");
@@ -278,18 +289,19 @@ public final class VentanaMenu extends javax.swing.JFrame {
                 etiAguaMouseClicked(evt);
             }
         });
-        getContentPane().add(etiAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 520, 90, 20));
+        getContentPane().add(etiAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 540, 90, 20));
 
-        precioAgua.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        precioAgua.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         precioAgua.setForeground(new java.awt.Color(255, 255, 255));
         precioAgua.setText("7000");
-        getContentPane().add(precioAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 520, 40, 20));
+        getContentPane().add(precioAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 540, 40, 20));
 
-        signoPrecio8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        signoPrecio8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signoPrecio8.setForeground(new java.awt.Color(255, 255, 255));
         signoPrecio8.setText("...$");
-        getContentPane().add(signoPrecio8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 520, -1, 20));
+        getContentPane().add(signoPrecio8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 540, -1, 20));
 
+        etiAguamineral.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         etiAguamineral.setForeground(new java.awt.Color(255, 255, 255));
         etiAguamineral.setText("Agua mineral");
         etiAguamineral.setToolTipText("Clic aqui para pedir");
@@ -298,18 +310,19 @@ public final class VentanaMenu extends javax.swing.JFrame {
                 etiAguamineralMouseClicked(evt);
             }
         });
-        getContentPane().add(etiAguamineral, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 560, 90, 20));
+        getContentPane().add(etiAguamineral, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 580, 110, 20));
 
-        precioAguamineral.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        precioAguamineral.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         precioAguamineral.setForeground(new java.awt.Color(255, 255, 255));
         precioAguamineral.setText("8000");
-        getContentPane().add(precioAguamineral, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 560, 40, 20));
+        getContentPane().add(precioAguamineral, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 580, 40, 20));
 
-        signoPrecio9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        signoPrecio9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signoPrecio9.setForeground(new java.awt.Color(255, 255, 255));
         signoPrecio9.setText("...$");
-        getContentPane().add(signoPrecio9, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 560, -1, 20));
+        getContentPane().add(signoPrecio9, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 580, -1, 20));
 
+        etiTelimon.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         etiTelimon.setForeground(new java.awt.Color(255, 255, 255));
         etiTelimon.setText("Te de limon");
         etiTelimon.setToolTipText("Clic aqui para pedir");
@@ -318,17 +331,17 @@ public final class VentanaMenu extends javax.swing.JFrame {
                 etiTelimonMouseClicked(evt);
             }
         });
-        getContentPane().add(etiTelimon, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, 90, 20));
+        getContentPane().add(etiTelimon, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 90, 20));
 
-        precioteLimon.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        precioteLimon.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         precioteLimon.setForeground(new java.awt.Color(255, 255, 255));
         precioteLimon.setText("12000");
-        getContentPane().add(precioteLimon, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 40, 20));
+        getContentPane().add(precioteLimon, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 380, 40, 20));
 
-        signoPrecio10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        signoPrecio10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signoPrecio10.setForeground(new java.awt.Color(255, 255, 255));
         signoPrecio10.setText("...$");
-        getContentPane().add(signoPrecio10, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, -1, 20));
+        getContentPane().add(signoPrecio10, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 380, -1, 20));
 
         botonFactura.setBackground(new java.awt.Color(153, 255, 153));
         botonFactura.setText("Factura");
@@ -346,8 +359,9 @@ public final class VentanaMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 640, -1, -1));
-        getContentPane().add(etipasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 200, 130));
+        getContentPane().add(etipasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 200, 120));
 
+        etiTagliatelle.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         etiTagliatelle.setForeground(new java.awt.Color(255, 255, 255));
         etiTagliatelle.setText("Tagliatelle");
         etiTagliatelle.setToolTipText("Clic aqui para pedir");
@@ -356,16 +370,19 @@ public final class VentanaMenu extends javax.swing.JFrame {
                 etiTagliatelleMouseClicked(evt);
             }
         });
-        getContentPane().add(etiTagliatelle, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 360, 90, -1));
+        getContentPane().add(etiTagliatelle, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, 90, -1));
 
+        signoPrecio11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signoPrecio11.setForeground(new java.awt.Color(255, 255, 255));
         signoPrecio11.setText("...$");
-        getContentPane().add(signoPrecio11, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 360, -1, -1));
+        getContentPane().add(signoPrecio11, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 380, -1, -1));
 
+        precioTagliatelle.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         precioTagliatelle.setForeground(new java.awt.Color(255, 255, 255));
         precioTagliatelle.setText("25000");
-        getContentPane().add(precioTagliatelle, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 356, -1, 20));
+        getContentPane().add(precioTagliatelle, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, -1, 20));
 
+        etiMarinara.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         etiMarinara.setForeground(new java.awt.Color(255, 255, 255));
         etiMarinara.setText("Marinara");
         etiMarinara.setToolTipText("Clic aqui para pedir");
@@ -374,16 +391,19 @@ public final class VentanaMenu extends javax.swing.JFrame {
                 etiMarinaraMouseClicked(evt);
             }
         });
-        getContentPane().add(etiMarinara, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 400, 60, -1));
+        getContentPane().add(etiMarinara, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 80, -1));
 
+        signoPrecio12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signoPrecio12.setForeground(new java.awt.Color(255, 255, 255));
         signoPrecio12.setText("...$");
-        getContentPane().add(signoPrecio12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 400, -1, 20));
+        getContentPane().add(signoPrecio12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 420, -1, 20));
 
+        precioMarinara.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         precioMarinara.setForeground(new java.awt.Color(255, 255, 255));
         precioMarinara.setText("24000");
-        getContentPane().add(precioMarinara, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 400, -1, -1));
+        getContentPane().add(precioMarinara, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, -1, -1));
 
+        etiPuttanesca.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         etiPuttanesca.setForeground(new java.awt.Color(255, 255, 255));
         etiPuttanesca.setText("Puttanesca");
         etiPuttanesca.setToolTipText("Clic aqui para pedir");
@@ -392,16 +412,19 @@ public final class VentanaMenu extends javax.swing.JFrame {
                 etiPuttanescaMouseClicked(evt);
             }
         });
-        getContentPane().add(etiPuttanesca, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 440, 60, -1));
+        getContentPane().add(etiPuttanesca, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 460, 80, -1));
 
+        signoPrecio13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signoPrecio13.setForeground(new java.awt.Color(255, 255, 255));
         signoPrecio13.setText("...$");
-        getContentPane().add(signoPrecio13, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 440, -1, -1));
+        getContentPane().add(signoPrecio13, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 460, -1, -1));
 
+        precioPuttanesca.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         precioPuttanesca.setForeground(new java.awt.Color(255, 255, 255));
         precioPuttanesca.setText("30000");
-        getContentPane().add(precioPuttanesca, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 440, 40, -1));
+        getContentPane().add(precioPuttanesca, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 460, 40, -1));
 
+        etiBolognese.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         etiBolognese.setForeground(new java.awt.Color(255, 255, 255));
         etiBolognese.setText("Boloñesa");
         etiBolognese.setToolTipText("Clic aqui para pedir");
@@ -410,16 +433,19 @@ public final class VentanaMenu extends javax.swing.JFrame {
                 etiBologneseMouseClicked(evt);
             }
         });
-        getContentPane().add(etiBolognese, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 480, 60, -1));
+        getContentPane().add(etiBolognese, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 500, 90, -1));
 
+        signoPrecio14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signoPrecio14.setForeground(new java.awt.Color(255, 255, 255));
         signoPrecio14.setText("...$");
-        getContentPane().add(signoPrecio14, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 480, -1, -1));
+        getContentPane().add(signoPrecio14, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 500, -1, -1));
 
+        precioBolognese.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         precioBolognese.setForeground(new java.awt.Color(255, 255, 255));
         precioBolognese.setText("28000");
-        getContentPane().add(precioBolognese, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 480, -1, -1));
+        getContentPane().add(precioBolognese, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 500, -1, -1));
 
+        etiAmatriciana.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         etiAmatriciana.setForeground(new java.awt.Color(255, 255, 255));
         etiAmatriciana.setText("Amatriciana");
         etiAmatriciana.setToolTipText("Clic aqui para pedir");
@@ -428,15 +454,21 @@ public final class VentanaMenu extends javax.swing.JFrame {
                 etiAmatricianaMouseClicked(evt);
             }
         });
-        getContentPane().add(etiAmatriciana, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 520, 70, -1));
+        getContentPane().add(etiAmatriciana, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 540, 90, -1));
 
+        signoPrecio15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signoPrecio15.setForeground(new java.awt.Color(255, 255, 255));
         signoPrecio15.setText("...$");
-        getContentPane().add(signoPrecio15, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 520, -1, -1));
+        getContentPane().add(signoPrecio15, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 540, -1, -1));
 
+        precioAmatriciana.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         precioAmatriciana.setForeground(new java.awt.Color(255, 255, 255));
         precioAmatriciana.setText("27000");
-        getContentPane().add(precioAmatriciana, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 520, -1, -1));
+        getContentPane().add(precioAmatriciana, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 540, -1, -1));
+
+        etiSaludo.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        etiSaludo.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(etiSaludo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 450, 30));
 
         etiFondo.setBackground(new java.awt.Color(51, 51, 51));
         etiFondo.setToolTipText("Click en un plato para ordenar");
@@ -447,8 +479,26 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
     private void botonFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFacturaActionPerformed
         float totalGeneral = VentanaPrincipal.gestionVenta.calcularTotalGeneral();
-        JOptionPane.showConfirmDialog(this, "TOTAL FACTURA: $"+totalGeneral);
-
+        
+        double iva = 0.10;
+        
+        double propina = totalGeneral * iva;
+        
+        double totalPagar = totalGeneral + propina;
+        
+        
+        
+                
+        
+        
+        JOptionPane.showMessageDialog(this, """
+                                            RESUMEN DE LA ORDEN \n
+                                            Por la utilizacion de nuestro servicio se le adicionara el 10 % a la factura: \n
+                                            Total por los platos seleccionados: $""" + totalGeneral + "\n" +
+                                            "Valor por el servicio:  $" + propina + "\n" +
+                                            "El total a pagar por los platos seleccionados y el servicio es:  $" + totalPagar + "\n" + "\n" + 
+                                            "MUCHAS GRACIAS POR UTILIZAR NUESTRO SERVICIO Y PREFERIR BAMBINO"  );
+ 
     }//GEN-LAST:event_botonFacturaActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
@@ -766,6 +816,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
     private javax.swing.JLabel etiPepsi;
     private javax.swing.JLabel etiPizza;
     private javax.swing.JLabel etiPuttanesca;
+    private javax.swing.JLabel etiSaludo;
     private javax.swing.JLabel etiTagliatelle;
     private javax.swing.JLabel etiTelimon;
     private javax.swing.JLabel etipasta;

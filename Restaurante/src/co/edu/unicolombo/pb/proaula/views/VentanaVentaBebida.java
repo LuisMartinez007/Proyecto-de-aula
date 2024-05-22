@@ -65,11 +65,11 @@ public class VentanaVentaBebida extends javax.swing.JDialog {
         });
         getContentPane().add(etiBebida, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 220, 30));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel1.setText("Precio:");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel2.setText("¿Cuantas desea?");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, -1, -1));
 
@@ -79,13 +79,14 @@ public class VentanaVentaBebida extends javax.swing.JDialog {
                 cantidadProductoActionPerformed(evt);
             }
         });
-        getContentPane().add(cantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 40, -1));
+        getContentPane().add(cantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 40, -1));
 
-        etiPrecio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        etiPrecio.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         getContentPane().add(etiPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 80, 20));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 400, -1));
 
         btnAceptar.setBackground(new java.awt.Color(153, 255, 153));
+        btnAceptar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         btnAceptar.setText("Aceptar ");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +96,7 @@ public class VentanaVentaBebida extends javax.swing.JDialog {
         getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, -1, -1));
 
         btnCancelar.setBackground(new java.awt.Color(255, 102, 102));
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +131,7 @@ public class VentanaVentaBebida extends javax.swing.JDialog {
             item.calcularSubtotal();
             VentanaPrincipal.gestionVenta.agregarItem(item);
 
-            JOptionPane.showMessageDialog(null, "Subtotal: $"+item.subtotal);
+            JOptionPane.showMessageDialog(null, "El valor por la cantidad selecionada es: $ " + item.subtotal);
         this.dispose();
         }
     }//GEN-LAST:event_btnAceptarActionPerformed

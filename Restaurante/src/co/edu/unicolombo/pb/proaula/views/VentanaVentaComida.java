@@ -74,7 +74,7 @@ public class VentanaVentaComida extends javax.swing.JDialog {
         plato.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         getContentPane().add(plato, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 240, 24));
 
-        etiCantidad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        etiCantidad.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         etiCantidad.setText("¿Cuantas desea?");
         getContentPane().add(etiCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 120, -1));
 
@@ -84,7 +84,7 @@ public class VentanaVentaComida extends javax.swing.JDialog {
                 cantidadProductoActionPerformed(evt);
             }
         });
-        getContentPane().add(cantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 45, -1));
+        getContentPane().add(cantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 45, -1));
 
         primerIngrediente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -107,7 +107,7 @@ public class VentanaVentaComida extends javax.swing.JDialog {
         getContentPane().add(tercerIngrediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
 
         btnAceptar.setBackground(new java.awt.Color(153, 255, 153));
-        btnAceptar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnAceptar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         btnAceptar.setText("Aceptar");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +117,7 @@ public class VentanaVentaComida extends javax.swing.JDialog {
         getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
 
         btnCancelar.setBackground(new java.awt.Color(255, 102, 102));
-        btnCancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,14 +125,16 @@ public class VentanaVentaComida extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
+
+        etiPrecio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         getContentPane().add(etiPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 90, 20));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 430, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel2.setText("Precio:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 50, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel3.setText("Ingredientes que desea remover");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 340));
@@ -167,7 +169,7 @@ public class VentanaVentaComida extends javax.swing.JDialog {
             item.calcularSubtotal();
             VentanaPrincipal.gestionVenta.agregarItem(item);
 
-            JOptionPane.showMessageDialog(null, "Subtotal: $"+item.subtotal);
+            JOptionPane.showMessageDialog(null, "El valor por la cantidad selecionada es: $" + item.subtotal);
         this.dispose();
         }
         
