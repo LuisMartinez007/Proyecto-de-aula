@@ -35,7 +35,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
             this.setLocation(x, y);
          
-        String saludo = "Saludos Sr(a)  " + VentanaPrincipal.gestionVenta.getVenta().cliente.nombre + " Bienvenidos a Bambino";
+        String saludo = "Saludos Sr(a)  " + VentanaRegistro.gestionVenta.getVenta().cliente.nombre + " Bienvenidos a Bambino";
         etiSaludo.setText(saludo);     
     }
     
@@ -478,7 +478,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFacturaActionPerformed
-        float totalGeneral = VentanaPrincipal.gestionVenta.calcularTotalGeneral();
+        float totalGeneral = VentanaRegistro.gestionVenta.calcularTotalGeneral();
         
         double iva = 0.10;
         
@@ -503,7 +503,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
-        VentanaPrincipal ventana =new VentanaPrincipal();
+        VentanaRegistro ventana =new VentanaRegistro();
         ventana.setVisible(true);
         
         this.dispose();

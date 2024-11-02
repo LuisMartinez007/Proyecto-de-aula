@@ -129,7 +129,7 @@ public class VentanaVentaBebida extends javax.swing.JDialog {
             item.producto = producto;
             item.candidad = cantidad;
             item.calcularSubtotal();
-            VentanaPrincipal.gestionVenta.agregarItem(item);
+            VentanaRegistro.gestionVenta.agregarItem(item);
 
             JOptionPane.showMessageDialog(null, "El valor por la cantidad selecionada es: $ " + item.subtotal);
         this.dispose();

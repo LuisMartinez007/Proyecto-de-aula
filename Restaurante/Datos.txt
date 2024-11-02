@@ -518,3 +518,13 @@ DATOS CLIENTE
 Nombre: Cara de culo
 Documento: 1053122560
 
+DATOS CLIENTE
+
+Nombre: Luis Martinez
+Documento: 1142915424
+
+DATOS CLIENTE
+
+Nombre: fnifwefiwfe
+Documento: 1234234
+

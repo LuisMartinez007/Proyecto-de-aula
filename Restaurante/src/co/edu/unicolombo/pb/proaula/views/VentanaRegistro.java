@@ -17,11 +17,11 @@ import javax.swing.JOptionPane;
  *
  * @author Usuario
  */
-public class VentanaPrincipal extends javax.swing.JFrame {
+public class VentanaRegistro extends javax.swing.JFrame {
 
     public static GestionVentas gestionVenta;
 
-    public VentanaPrincipal() {
+    public VentanaRegistro() {
 
         initComponents();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -45,52 +45,47 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fondo = new javax.swing.JPanel();
         bienvenida = new javax.swing.JLabel();
         etiNombre = new javax.swing.JLabel();
         nombreText = new javax.swing.JTextField();
-        documentoText = new javax.swing.JTextField();
-        etiDocumento = new javax.swing.JLabel();
         btnSiguiente = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         etiMensaje2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textMensaje = new javax.swing.JTextArea();
         etiImagen = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        etiNombre1 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        documentoText1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bambino");
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bienvenida.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        bienvenida.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         bienvenida.setForeground(new java.awt.Color(255, 255, 255));
-        bienvenida.setText("Registro del cliente");
+        bienvenida.setText("Registro");
         bienvenida.setAlignmentX(0.5F);
-        getContentPane().add(bienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, -1, -1));
+        fondo.add(bienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 120, -1));
 
-        etiNombre.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        etiNombre.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         etiNombre.setForeground(new java.awt.Color(255, 255, 255));
-        etiNombre.setText("Nombre completo:");
-        getContentPane().add(etiNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 160, 140, 24));
+        etiNombre.setText("DOCUMENTO");
+        fondo.add(etiNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 140, 24));
 
+        nombreText.setBackground(new java.awt.Color(255, 255, 255));
+        nombreText.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        nombreText.setForeground(new java.awt.Color(204, 204, 204));
+        nombreText.setText("Ingrese su nombre de usuario");
+        nombreText.setBorder(null);
         nombreText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreTextActionPerformed(evt);
             }
         });
-        getContentPane().add(nombreText, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 218, 31));
-
-        documentoText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                documentoTextActionPerformed(evt);
-            }
-        });
-        getContentPane().add(documentoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 218, 31));
-
-        etiDocumento.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        etiDocumento.setForeground(new java.awt.Color(255, 255, 255));
-        etiDocumento.setText("Número documento:");
-        getContentPane().add(etiDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 210, 140, 24));
+        fondo.add(nombreText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 370, 30));
 
         btnSiguiente.setBackground(new java.awt.Color(153, 255, 153));
         btnSiguiente.setText("Siguiente");
@@ -99,7 +94,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 btnSiguienteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, -1, -1));
+        fondo.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, -1, -1));
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -107,21 +102,44 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, -1, -1));
+        fondo.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
 
         etiMensaje2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         etiMensaje2.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(etiMensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, 220, 25));
+        fondo.add(etiMensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, 220, 25));
 
-        textMensaje.setEditable(false);
-        textMensaje.setColumns(20);
-        textMensaje.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        textMensaje.setRows(5);
-        textMensaje.setBorder(null);
-        jScrollPane1.setViewportView(textMensaje);
+        etiImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/comida italiana.jpg"))); // NOI18N
+        fondo.add(etiImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 280, 500));
+        fondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 370, -1));
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 326, 110));
-        getContentPane().add(etiImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 570));
+        etiNombre1.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        etiNombre1.setForeground(new java.awt.Color(255, 255, 255));
+        etiNombre1.setText("USUARIO");
+        fondo.add(etiNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 140, 24));
+        fondo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 370, -1));
+
+        documentoText1.setBackground(new java.awt.Color(255, 255, 255));
+        documentoText1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        documentoText1.setForeground(new java.awt.Color(204, 204, 204));
+        documentoText1.setText("Ingrese su número de documento");
+        documentoText1.setBorder(null);
+        documentoText1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                documentoText1ActionPerformed(evt);
+            }
+        });
+        fondo.add(documentoText1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 370, 30));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(fondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(fondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -129,7 +147,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         Cliente cliente = new Cliente();
         cliente.nombre = nombreText.getText();
-        cliente.documento = documentoText.getText();
+        cliente.documento = nombreText.getText();
         if (cliente.nombre.isEmpty() || !validarCaracteres(cliente.nombre) || cliente.nombre.charAt(0) == ' ') {
             JOptionPane.showMessageDialog(null, "Nombre invalido.");
             return;
@@ -140,7 +158,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             return;
         }
 
-        textMensaje.setText("Sr(a) " + cliente.nombre + "\nEstamos muy felices de atenderlo(a) el día de hoy.\n" + "\nNumero de identificación del cliente: " + cliente.documento);
         etiMensaje2.setText("Registro realizado con exito");
         
         gestionVenta.setCliente(cliente);
@@ -174,13 +191,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void nombreTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTextActionPerformed
         // TODO add your handling code here:
-        documentoText.requestFocus();
+        btnGuardar.doClick();
     }//GEN-LAST:event_nombreTextActionPerformed
 
-    private void documentoTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_documentoTextActionPerformed
+    private void documentoText1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_documentoText1ActionPerformed
         // TODO add your handling code here:
-        btnGuardar.doClick();
-    }//GEN-LAST:event_documentoTextActionPerformed
+    }//GEN-LAST:event_documentoText1ActionPerformed
 
     public void SetImageLabel(JLabel nombrelabel, String root) {
         ImageIcon imagen = new ImageIcon(root);
@@ -216,14 +232,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -232,7 +252,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaPrincipal().setVisible(true);
+                new VentanaRegistro().setVisible(true);
             }
         });
     }
@@ -241,13 +261,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel bienvenida;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnSiguiente;
-    private javax.swing.JTextField documentoText;
-    private javax.swing.JLabel etiDocumento;
+    private javax.swing.JTextField documentoText1;
     private javax.swing.JLabel etiImagen;
     private javax.swing.JLabel etiMensaje2;
     private javax.swing.JLabel etiNombre;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel etiNombre1;
+    private javax.swing.JPanel fondo;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField nombreText;
-    private javax.swing.JTextArea textMensaje;
     // End of variables declaration//GEN-END:variables
 }
