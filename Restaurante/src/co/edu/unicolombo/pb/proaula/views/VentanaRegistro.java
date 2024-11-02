@@ -2,6 +2,7 @@ package co.edu.unicolombo.pb.proaula.views;
 
 import co.edu.unicolombo.pb.proaula.conceptos.Cliente;
 import co.edu.unicolombo.pb.proaula.crud.GestionVentas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -31,8 +32,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
 
         this.setLocation(x, y);
         btnSiguiente.setEnabled(false);
-
-        SetImageLabel(etiImagen, "src/imagenes/comida italiana.jpg");
         gestionVenta = new GestionVentas();
     }
 
@@ -46,46 +45,51 @@ public class VentanaRegistro extends javax.swing.JFrame {
     private void initComponents() {
 
         fondo = new javax.swing.JPanel();
-        bienvenida = new javax.swing.JLabel();
-        etiNombre = new javax.swing.JLabel();
-        nombreText = new javax.swing.JTextField();
+        etiTitulo = new javax.swing.JLabel();
+        etiDocumento = new javax.swing.JLabel();
+        usuarioText = new javax.swing.JTextField();
         btnSiguiente = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
-        etiMensaje2 = new javax.swing.JLabel();
-        etiImagen = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        etiNombre1 = new javax.swing.JLabel();
+        etiUsuario = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        documentoText1 = new javax.swing.JTextField();
+        documentoText = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        etiImagen = new javax.swing.JLabel();
+        etiSalir = new javax.swing.JLabel();
+        etiIniciarSesion = new javax.swing.JLabel();
+        etiRegistrarse = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bambino");
+        setPreferredSize(new java.awt.Dimension(780, 500));
         setResizable(false);
 
+        fondo.setBackground(new java.awt.Color(255, 255, 255));
         fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bienvenida.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
-        bienvenida.setForeground(new java.awt.Color(255, 255, 255));
-        bienvenida.setText("Registro");
-        bienvenida.setAlignmentX(0.5F);
-        fondo.add(bienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 120, -1));
+        etiTitulo.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        etiTitulo.setForeground(new java.awt.Color(51, 51, 51));
+        etiTitulo.setText("Registro");
+        etiTitulo.setAlignmentX(0.5F);
+        fondo.add(etiTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 120, -1));
 
-        etiNombre.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
-        etiNombre.setForeground(new java.awt.Color(255, 255, 255));
-        etiNombre.setText("DOCUMENTO");
-        fondo.add(etiNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 140, 24));
+        etiDocumento.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        etiDocumento.setForeground(new java.awt.Color(51, 51, 51));
+        etiDocumento.setText("DOCUMENTO");
+        fondo.add(etiDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 140, 24));
 
-        nombreText.setBackground(new java.awt.Color(255, 255, 255));
-        nombreText.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        nombreText.setForeground(new java.awt.Color(204, 204, 204));
-        nombreText.setText("Ingrese su nombre de usuario");
-        nombreText.setBorder(null);
-        nombreText.addActionListener(new java.awt.event.ActionListener() {
+        usuarioText.setBackground(new java.awt.Color(255, 255, 255));
+        usuarioText.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        usuarioText.setForeground(new java.awt.Color(102, 102, 102));
+        usuarioText.setText("Ingrese su nombre de usuario");
+        usuarioText.setBorder(null);
+        usuarioText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreTextActionPerformed(evt);
+                usuarioTextActionPerformed(evt);
             }
         });
-        fondo.add(nombreText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 370, 30));
+        fondo.add(usuarioText, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 370, 30));
 
         btnSiguiente.setBackground(new java.awt.Color(153, 255, 153));
         btnSiguiente.setText("Siguiente");
@@ -94,7 +98,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
                 btnSiguienteActionPerformed(evt);
             }
         });
-        fondo.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, -1, -1));
+        fondo.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, -1, -1));
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -102,43 +106,96 @@ public class VentanaRegistro extends javax.swing.JFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        fondo.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
+        fondo.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, -1, -1));
+        fondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 370, -1));
 
-        etiMensaje2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        etiMensaje2.setForeground(new java.awt.Color(255, 255, 255));
-        fondo.add(etiMensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, 220, 25));
+        etiUsuario.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        etiUsuario.setForeground(new java.awt.Color(51, 51, 51));
+        etiUsuario.setText("USUARIO");
+        fondo.add(etiUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 140, 24));
+        fondo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 370, -1));
 
-        etiImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/comida italiana.jpg"))); // NOI18N
-        fondo.add(etiImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 280, 500));
-        fondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 370, -1));
-
-        etiNombre1.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
-        etiNombre1.setForeground(new java.awt.Color(255, 255, 255));
-        etiNombre1.setText("USUARIO");
-        fondo.add(etiNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 140, 24));
-        fondo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 370, -1));
-
-        documentoText1.setBackground(new java.awt.Color(255, 255, 255));
-        documentoText1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        documentoText1.setForeground(new java.awt.Color(204, 204, 204));
-        documentoText1.setText("Ingrese su número de documento");
-        documentoText1.setBorder(null);
-        documentoText1.addActionListener(new java.awt.event.ActionListener() {
+        documentoText.setBackground(new java.awt.Color(255, 255, 255));
+        documentoText.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        documentoText.setForeground(new java.awt.Color(102, 102, 102));
+        documentoText.setText("Ingrese su número de documento");
+        documentoText.setBorder(null);
+        documentoText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                documentoText1ActionPerformed(evt);
+                documentoTextActionPerformed(evt);
             }
         });
-        fondo.add(documentoText1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 370, 30));
+        fondo.add(documentoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 370, 30));
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 204));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        etiImagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-male-user-100.png"))); // NOI18N
+        jPanel1.add(etiImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 280, 100));
+
+        etiSalir.setBackground(new java.awt.Color(0, 153, 204));
+        etiSalir.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        etiSalir.setForeground(new java.awt.Color(255, 255, 255));
+        etiSalir.setHorizontalAlignment(10
+        );
+        etiSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-salida-50.png"))); // NOI18N
+        etiSalir.setText(" Salir");
+        etiSalir.setOpaque(true);
+        etiSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                etiSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                etiSalirMouseExited(evt);
+            }
+        });
+        jPanel1.add(etiSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 280, 60));
+
+        etiIniciarSesion.setBackground(new java.awt.Color(0, 153, 204));
+        etiIniciarSesion.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        etiIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        etiIniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-accede-redondeado-derecho-50.png"))); // NOI18N
+        etiIniciarSesion.setText(" Iniciar sesión");
+        etiIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        etiIniciarSesion.setOpaque(true);
+        etiIniciarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                etiIniciarSesionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                etiIniciarSesionMouseExited(evt);
+            }
+        });
+        jPanel1.add(etiIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 280, 60));
+
+        etiRegistrarse.setBackground(new java.awt.Color(0, 153, 204));
+        etiRegistrarse.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        etiRegistrarse.setForeground(new java.awt.Color(255, 255, 255));
+        etiRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-registro-50.png"))); // NOI18N
+        etiRegistrarse.setText(" Registrarse");
+        etiRegistrarse.setOpaque(true);
+        etiRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                etiRegistrarseMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                etiRegistrarseMouseExited(evt);
+            }
+        });
+        jPanel1.add(etiRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 280, 60));
+
+        fondo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -146,8 +203,8 @@ public class VentanaRegistro extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         Cliente cliente = new Cliente();
-        cliente.nombre = nombreText.getText();
-        cliente.documento = nombreText.getText();
+        cliente.nombre = usuarioText.getText();
+        cliente.documento = usuarioText.getText();
         if (cliente.nombre.isEmpty() || !validarCaracteres(cliente.nombre) || cliente.nombre.charAt(0) == ' ') {
             JOptionPane.showMessageDialog(null, "Nombre invalido.");
             return;
@@ -157,8 +214,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Número de documento invalido.");
             return;
         }
-
-        etiMensaje2.setText("Registro realizado con exito");
         
         gestionVenta.setCliente(cliente);
         
@@ -189,14 +244,38 @@ public class VentanaRegistro extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Para seleccionar un plato presione su nombre");
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
-    private void nombreTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTextActionPerformed
+    private void usuarioTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioTextActionPerformed
         // TODO add your handling code here:
         btnGuardar.doClick();
-    }//GEN-LAST:event_nombreTextActionPerformed
+    }//GEN-LAST:event_usuarioTextActionPerformed
 
-    private void documentoText1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_documentoText1ActionPerformed
+    private void documentoTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_documentoTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_documentoText1ActionPerformed
+    }//GEN-LAST:event_documentoTextActionPerformed
+
+    private void etiSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiSalirMouseEntered
+        etiSalir.setBackground(new Color(58,167,203));
+    }//GEN-LAST:event_etiSalirMouseEntered
+
+    private void etiSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiSalirMouseExited
+        etiSalir.setBackground(new Color(0,153,204));
+    }//GEN-LAST:event_etiSalirMouseExited
+
+    private void etiIniciarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiIniciarSesionMouseEntered
+        etiIniciarSesion.setBackground(new Color(58,167,203));
+    }//GEN-LAST:event_etiIniciarSesionMouseEntered
+
+    private void etiIniciarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiIniciarSesionMouseExited
+        etiIniciarSesion.setBackground(new Color(0,153,204));
+    }//GEN-LAST:event_etiIniciarSesionMouseExited
+
+    private void etiRegistrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiRegistrarseMouseEntered
+        etiRegistrarse.setBackground(new Color(58,167,203));
+    }//GEN-LAST:event_etiRegistrarseMouseEntered
+
+    private void etiRegistrarseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiRegistrarseMouseExited
+        etiRegistrarse.setBackground(new Color(0,153,204));
+    }//GEN-LAST:event_etiRegistrarseMouseExited
 
     public void SetImageLabel(JLabel nombrelabel, String root) {
         ImageIcon imagen = new ImageIcon(root);
@@ -258,17 +337,20 @@ public class VentanaRegistro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel bienvenida;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnSiguiente;
-    private javax.swing.JTextField documentoText1;
+    private javax.swing.JTextField documentoText;
+    private javax.swing.JLabel etiDocumento;
     private javax.swing.JLabel etiImagen;
-    private javax.swing.JLabel etiMensaje2;
-    private javax.swing.JLabel etiNombre;
-    private javax.swing.JLabel etiNombre1;
+    private javax.swing.JLabel etiIniciarSesion;
+    private javax.swing.JLabel etiRegistrarse;
+    private javax.swing.JLabel etiSalir;
+    private javax.swing.JLabel etiTitulo;
+    private javax.swing.JLabel etiUsuario;
     private javax.swing.JPanel fondo;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField nombreText;
+    private javax.swing.JTextField usuarioText;
     // End of variables declaration//GEN-END:variables
 }
