@@ -4,14 +4,7 @@ import co.edu.unicolombo.pb.proaula.conceptos.Cliente;
 import co.edu.unicolombo.pb.proaula.crud.GestionVentas;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.Toolkit;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,7 +24,17 @@ public class VentanaRegistro extends javax.swing.JFrame {
         int y = (int) ((screenSize.getHeight() - this.getHeight()) / 2);
 
         this.setLocation(x, y);
-        btnSiguiente.setEnabled(false);
+        etiTitulo.setVisible(false);
+        etiDocumento.setVisible(false);
+        documentoText.setVisible(false);
+        jSeparator1.setVisible(false);
+        etiUsuario.setVisible(false);
+        usuarioText.setVisible(false);
+        jSeparator2.setVisible(false);
+        etiGuardar.setVisible(false);
+        etiSiguiente.setVisible(false);
+        etiSiguiente.setEnabled(false);
+        
         gestionVenta = new GestionVentas();
     }
 
@@ -46,19 +49,19 @@ public class VentanaRegistro extends javax.swing.JFrame {
 
         fondo = new javax.swing.JPanel();
         etiTitulo = new javax.swing.JLabel();
-        etiDocumento = new javax.swing.JLabel();
-        usuarioText = new javax.swing.JTextField();
-        btnSiguiente = new javax.swing.JButton();
-        btnGuardar = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
         etiUsuario = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         documentoText = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        etiDocumento = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        usuarioText = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         etiImagen = new javax.swing.JLabel();
         etiSalir = new javax.swing.JLabel();
         etiIniciarSesion = new javax.swing.JLabel();
         etiRegistrarse = new javax.swing.JLabel();
+        etiGuardar = new javax.swing.JLabel();
+        etiSiguiente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bambino");
@@ -72,60 +75,63 @@ public class VentanaRegistro extends javax.swing.JFrame {
         etiTitulo.setForeground(new java.awt.Color(51, 51, 51));
         etiTitulo.setText("Registro");
         etiTitulo.setAlignmentX(0.5F);
-        fondo.add(etiTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 120, -1));
-
-        etiDocumento.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
-        etiDocumento.setForeground(new java.awt.Color(51, 51, 51));
-        etiDocumento.setText("DOCUMENTO");
-        fondo.add(etiDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 140, 24));
-
-        usuarioText.setBackground(new java.awt.Color(255, 255, 255));
-        usuarioText.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        usuarioText.setForeground(new java.awt.Color(102, 102, 102));
-        usuarioText.setText("Ingrese su nombre de usuario");
-        usuarioText.setBorder(null);
-        usuarioText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usuarioTextActionPerformed(evt);
-            }
-        });
-        fondo.add(usuarioText, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 370, 30));
-
-        btnSiguiente.setBackground(new java.awt.Color(153, 255, 153));
-        btnSiguiente.setText("Siguiente");
-        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSiguienteActionPerformed(evt);
-            }
-        });
-        fondo.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, -1, -1));
-
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
-        fondo.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, -1, -1));
-        fondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 370, -1));
+        fondo.add(etiTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 270, -1));
 
         etiUsuario.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         etiUsuario.setForeground(new java.awt.Color(51, 51, 51));
         etiUsuario.setText("USUARIO");
-        fondo.add(etiUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 140, 24));
-        fondo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 370, -1));
+        fondo.add(etiUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 140, 24));
 
         documentoText.setBackground(new java.awt.Color(255, 255, 255));
         documentoText.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         documentoText.setForeground(new java.awt.Color(102, 102, 102));
         documentoText.setText("Ingrese su número de documento");
         documentoText.setBorder(null);
+        documentoText.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                documentoTextFocusGained(evt);
+            }
+        });
+        documentoText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                documentoTextMousePressed(evt);
+            }
+        });
         documentoText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 documentoTextActionPerformed(evt);
             }
         });
-        fondo.add(documentoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 370, 30));
+        fondo.add(documentoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 370, 30));
+        fondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 370, -1));
+
+        etiDocumento.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        etiDocumento.setForeground(new java.awt.Color(51, 51, 51));
+        etiDocumento.setText("DOCUMENTO");
+        fondo.add(etiDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 140, 24));
+        fondo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 370, -1));
+
+        usuarioText.setBackground(new java.awt.Color(255, 255, 255));
+        usuarioText.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        usuarioText.setForeground(new java.awt.Color(102, 102, 102));
+        usuarioText.setText("Ingrese su nombre de usuario");
+        usuarioText.setBorder(null);
+        usuarioText.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                usuarioTextFocusGained(evt);
+            }
+        });
+        usuarioText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                usuarioTextMousePressed(evt);
+            }
+        });
+        usuarioText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuarioTextActionPerformed(evt);
+            }
+        });
+        fondo.add(usuarioText, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 370, 30));
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -137,12 +143,14 @@ public class VentanaRegistro extends javax.swing.JFrame {
         etiSalir.setBackground(new java.awt.Color(0, 153, 204));
         etiSalir.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
         etiSalir.setForeground(new java.awt.Color(255, 255, 255));
-        etiSalir.setHorizontalAlignment(10
-        );
         etiSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-salida-50.png"))); // NOI18N
         etiSalir.setText(" Salir");
+        etiSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         etiSalir.setOpaque(true);
         etiSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                etiSalirMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 etiSalirMouseEntered(evt);
             }
@@ -157,9 +165,12 @@ public class VentanaRegistro extends javax.swing.JFrame {
         etiIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         etiIniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-accede-redondeado-derecho-50.png"))); // NOI18N
         etiIniciarSesion.setText(" Iniciar sesión");
-        etiIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        etiIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         etiIniciarSesion.setOpaque(true);
         etiIniciarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                etiIniciarSesionMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 etiIniciarSesionMouseEntered(evt);
             }
@@ -174,8 +185,12 @@ public class VentanaRegistro extends javax.swing.JFrame {
         etiRegistrarse.setForeground(new java.awt.Color(255, 255, 255));
         etiRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-registro-50.png"))); // NOI18N
         etiRegistrarse.setText(" Registrarse");
+        etiRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         etiRegistrarse.setOpaque(true);
         etiRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                etiRegistrarseMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 etiRegistrarseMouseEntered(evt);
             }
@@ -186,6 +201,48 @@ public class VentanaRegistro extends javax.swing.JFrame {
         jPanel1.add(etiRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 280, 60));
 
         fondo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 500));
+
+        etiGuardar.setBackground(new java.awt.Color(255, 255, 255));
+        etiGuardar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        etiGuardar.setForeground(new java.awt.Color(51, 51, 51));
+        etiGuardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiGuardar.setText("Guardar");
+        etiGuardar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        etiGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        etiGuardar.setOpaque(true);
+        etiGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                etiGuardarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                etiGuardarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                etiGuardarMouseExited(evt);
+            }
+        });
+        fondo.add(etiGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 80, 30));
+
+        etiSiguiente.setBackground(new java.awt.Color(255, 255, 255));
+        etiSiguiente.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        etiSiguiente.setForeground(new java.awt.Color(51, 51, 51));
+        etiSiguiente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiSiguiente.setText("Siguiente");
+        etiSiguiente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        etiSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        etiSiguiente.setOpaque(true);
+        etiSiguiente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                etiSiguienteMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                etiSiguienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                etiSiguienteMouseExited(evt);
+            }
+        });
+        fondo.add(etiSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 350, 80, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,57 +258,13 @@ public class VentanaRegistro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        Cliente cliente = new Cliente();
-        cliente.nombre = usuarioText.getText();
-        cliente.documento = usuarioText.getText();
-        if (cliente.nombre.isEmpty() || !validarCaracteres(cliente.nombre) || cliente.nombre.charAt(0) == ' ') {
-            JOptionPane.showMessageDialog(null, "Nombre invalido.");
-            return;
-        }
-
-        if (!validarNumeros(cliente.documento) || cliente.documento.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Número de documento invalido.");
-            return;
-        }
+    private void documentoTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_documentoTextActionPerformed
         
-        gestionVenta.setCliente(cliente);
-        
-        btnSiguiente.setEnabled(true);
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("Datos.txt", true));
-            writer.write("DATOS CLIENTE");
-            writer.newLine();
-            writer.write("\nNombre: " + cliente.nombre + "\nDocumento: " + cliente.documento + "\n");
-            writer.write("");
-            writer.newLine();
-
-            writer.close();
-        } catch (IOException e) {
-            System.err.println("Error al escribir en el archivo.");
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_btnGuardarActionPerformed
-
-    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        
-        
-        VentanaMenu menu = new VentanaMenu();
-        //menu.setTitle("SALUDOS " + VentanaPrincipal.gestionVenta.getVenta().cliente.nombre); 
-        menu.setLocationRelativeTo(null);
-        menu.setVisible(true);
-        this.setVisible(false);
-        JOptionPane.showMessageDialog(null, "Para seleccionar un plato presione su nombre");
-    }//GEN-LAST:event_btnSiguienteActionPerformed
+    }//GEN-LAST:event_documentoTextActionPerformed
 
     private void usuarioTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioTextActionPerformed
         // TODO add your handling code here:
-        btnGuardar.doClick();
     }//GEN-LAST:event_usuarioTextActionPerformed
-
-    private void documentoTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_documentoTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_documentoTextActionPerformed
 
     private void etiSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiSalirMouseEntered
         etiSalir.setBackground(new Color(58,167,203));
@@ -277,14 +290,117 @@ public class VentanaRegistro extends javax.swing.JFrame {
         etiRegistrarse.setBackground(new Color(0,153,204));
     }//GEN-LAST:event_etiRegistrarseMouseExited
 
-    public void SetImageLabel(JLabel nombrelabel, String root) {
-        ImageIcon imagen = new ImageIcon(root);
-        Icon icon = new ImageIcon(
-                imagen.getImage().getScaledInstance(nombrelabel.getWidth(), nombrelabel.getHeight(), Image.SCALE_DEFAULT));
-        nombrelabel.setIcon(icon);
-        this.repaint();
-    }
+    private void etiGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiGuardarMouseEntered
+        etiGuardar.setBackground(new Color(205,205,205));
+    }//GEN-LAST:event_etiGuardarMouseEntered
 
+    private void etiGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiGuardarMouseExited
+        etiGuardar.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_etiGuardarMouseExited
+
+    private void etiGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiGuardarMouseClicked
+        Cliente cliente = new Cliente();
+        cliente.nombre = usuarioText.getText();
+        cliente.documento = documentoText.getText();
+        if(usuarioText.isVisible()){
+            if (cliente.nombre.isEmpty() || !validarCaracteres(cliente.nombre) || cliente.nombre.charAt(0) == ' ') {
+            JOptionPane.showMessageDialog(null, "Nombre invalido.");
+            return;
+            }
+        }
+        if (!validarNumeros(cliente.documento) || cliente.documento.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Número de documento invalido.");
+            return;
+        }
+        
+        gestionVenta.setCliente(cliente);
+        
+        etiSiguiente.setEnabled(true);
+    }//GEN-LAST:event_etiGuardarMouseClicked
+
+    private void etiSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiSiguienteMouseClicked
+        if(etiSiguiente.isEnabled()){
+        VentanaMenu menu = new VentanaMenu(); 
+        menu.setLocationRelativeTo(null);
+        menu.setVisible(true);
+        this.setVisible(false);
+        JOptionPane.showMessageDialog(null, "Para seleccionar un plato presione su nombre");
+        }else{
+        
+        }
+    }//GEN-LAST:event_etiSiguienteMouseClicked
+
+    private void etiSiguienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiSiguienteMouseEntered
+        etiSiguiente.setBackground(new Color(205,205,205));
+    }//GEN-LAST:event_etiSiguienteMouseEntered
+
+    private void etiSiguienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiSiguienteMouseExited
+        etiSiguiente.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_etiSiguienteMouseExited
+
+    private void etiSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiSalirMouseClicked
+        dispose();
+    }//GEN-LAST:event_etiSalirMouseClicked
+
+    private void etiIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiIniciarSesionMouseClicked
+        etiTitulo.setVisible(true);
+        etiTitulo.setText("Inicio de sesión");
+        etiDocumento.setVisible(true);
+        documentoText.setVisible(true);
+        jSeparator1.setVisible(true);
+        etiUsuario.setVisible(false);
+        usuarioText.setVisible(false);
+        jSeparator2.setVisible(false);
+        etiGuardar.setVisible(true);
+        etiGuardar.setText("Entrar");
+        etiSiguiente.setVisible(true);
+    }//GEN-LAST:event_etiIniciarSesionMouseClicked
+
+    private void etiRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiRegistrarseMouseClicked
+        etiTitulo.setVisible(true);
+        etiTitulo.setText("Registro");
+        etiDocumento.setVisible(true);
+        documentoText.setVisible(true);
+        jSeparator1.setVisible(true);
+        etiUsuario.setVisible(true);
+        usuarioText.setVisible(true);
+        jSeparator2.setVisible(true);
+        etiGuardar.setVisible(true);
+        etiGuardar.setText("Guardar");
+        etiSiguiente.setVisible(true);
+    }//GEN-LAST:event_etiRegistrarseMouseClicked
+
+    private void documentoTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_documentoTextMousePressed
+        
+    }//GEN-LAST:event_documentoTextMousePressed
+
+    private void usuarioTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioTextMousePressed
+        
+    }//GEN-LAST:event_usuarioTextMousePressed
+
+    private void usuarioTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usuarioTextFocusGained
+        if(usuarioText.getText().equals("Ingrese su nombre de usuario")){
+            usuarioText.setText("");
+            usuarioText.setForeground(new Color(51,51,51));
+        }
+        if(documentoText.getText().isEmpty()){
+            documentoText.setText("Ingrese su número de documento");
+            documentoText.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_usuarioTextFocusGained
+
+    private void documentoTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_documentoTextFocusGained
+        if(documentoText.getText().equals("Ingrese su número de documento")){
+            documentoText.setText("");
+            documentoText.setForeground(new Color(51,51,51));
+        }
+        if(usuarioText.getText().isEmpty()){
+            usuarioText.setText("Ingrese su nombre de usuario");
+            usuarioText.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_documentoTextFocusGained
+
+    
     public static boolean validarCaracteres(String datos) {
         return datos.matches("[a-z A-Z]*");
     }
@@ -337,14 +453,14 @@ public class VentanaRegistro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnSiguiente;
     private javax.swing.JTextField documentoText;
     private javax.swing.JLabel etiDocumento;
+    private javax.swing.JLabel etiGuardar;
     private javax.swing.JLabel etiImagen;
     private javax.swing.JLabel etiIniciarSesion;
     private javax.swing.JLabel etiRegistrarse;
     private javax.swing.JLabel etiSalir;
+    private javax.swing.JLabel etiSiguiente;
     private javax.swing.JLabel etiTitulo;
     private javax.swing.JLabel etiUsuario;
     private javax.swing.JPanel fondo;
