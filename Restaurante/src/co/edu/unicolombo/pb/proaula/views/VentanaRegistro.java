@@ -1,6 +1,7 @@
 package co.edu.unicolombo.pb.proaula.views;
 
 import co.edu.unicolombo.pb.proaula.conceptos.Cliente;
+import co.edu.unicolombo.pb.proaula.crud.GestionCliente;
 import co.edu.unicolombo.pb.proaula.crud.GestionVentas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,6 +15,7 @@ import javax.swing.JOptionPane;
 public class VentanaRegistro extends javax.swing.JFrame {
 
     public static GestionVentas gestionVenta;
+    public static GestionCliente gestionCliente;
 
     public VentanaRegistro() {
 
@@ -35,6 +37,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
         etiSiguiente.setVisible(false);
         etiSiguiente.setEnabled(false);
         
+        gestionCliente = new GestionCliente();
         gestionVenta = new GestionVentas();
     }
 
@@ -299,33 +302,35 @@ public class VentanaRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_etiGuardarMouseExited
 
     private void etiGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiGuardarMouseClicked
-        Cliente cliente = new Cliente();
-        cliente.nombre = usuarioText.getText();
-        cliente.documento = documentoText.getText();
+        
+        String nombre = usuarioText.getText();
+        String documento = documentoText.getText();
         if(usuarioText.isVisible()){
-            if (cliente.nombre.isEmpty() || !validarCaracteres(cliente.nombre) || cliente.nombre.charAt(0) == ' ') {
-            JOptionPane.showMessageDialog(null, "Nombre invalido.");
+            if (nombre.isEmpty() || !validarCaracteres(nombre) || nombre.charAt(0) == ' ') {
+            JOptionPane.showMessageDialog(null, "Nombre de usuario invalido.");
             return;
             }
         }
-        if (!validarNumeros(cliente.documento) || cliente.documento.isEmpty()) {
+        if (!validarNumeros(documento) || documento.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Número de documento invalido.");
             return;
         }
-        
+        Cliente cliente = new Cliente(nombre,documento);
         gestionVenta.setCliente(cliente);
+        if(etiGuardar.getText().equals("Guardar")){
+            gestionCliente.guardarCliente(cliente);
+            if(gestionCliente.buscarCliente(documento) == null){}
+            else{siguienteVentana();}
+        } else {
+            if(gestionCliente.buscarCliente(documento) == null){
+                JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+            } else{siguienteVentana();}
+        }
         
-        etiSiguiente.setEnabled(true);
     }//GEN-LAST:event_etiGuardarMouseClicked
 
     private void etiSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiSiguienteMouseClicked
         if(etiSiguiente.isEnabled()){
-        VentanaMenu menu = new VentanaMenu(); 
-        menu.setLocationRelativeTo(null);
-        menu.setVisible(true);
-        this.setVisible(false);
-        JOptionPane.showMessageDialog(null, "Para seleccionar un plato presione su nombre");
-        }else{
         
         }
     }//GEN-LAST:event_etiSiguienteMouseClicked
@@ -407,6 +412,14 @@ public class VentanaRegistro extends javax.swing.JFrame {
 
     public static boolean validarNumeros(String datos) {
         return datos.matches("[0-9]*");
+    }
+    
+    private void siguienteVentana(){
+        VentanaMenu menu = new VentanaMenu(); 
+        menu.setLocationRelativeTo(null);
+        menu.setVisible(true);
+        this.dispose();
+        JOptionPane.showMessageDialog(null, "Para seleccionar un plato presione su nombre");
     }
 
 // Agrega un ComponentListener a tu JFrame para detectar cambios de tamaño

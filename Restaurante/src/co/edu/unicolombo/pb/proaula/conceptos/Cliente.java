@@ -4,12 +4,19 @@
  */
 package co.edu.unicolombo.pb.proaula.conceptos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Usuario
  */
-public class Cliente {
-
+public class Cliente implements Serializable {
+    private static final long serialVersionUID = 1L;
     public  String nombre;
     public  String documento;
+    
+    public Cliente(String nombre, String documento){
+        this.nombre = nombre;
+        this.documento = documento;
+    }
 }
