@@ -359,7 +359,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 640, -1, -1));
-        getContentPane().add(etipasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 200, 120));
+        getContentPane().add(etipasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 200, 120));
 
         etiTagliatelle.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         etiTagliatelle.setForeground(new java.awt.Color(255, 255, 255));
@@ -472,7 +472,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
         etiFondo.setBackground(new java.awt.Color(51, 51, 51));
         etiFondo.setToolTipText("Click en un plato para ordenar");
-        getContentPane().add(etiFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 720));
+        getContentPane().add(etiFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 680));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
