@@ -23,10 +23,10 @@ public final class VentanaMenu extends javax.swing.JFrame {
     public VentanaMenu() {
         
         initComponents();
-         SetImageLabel(etiPizza,"src/imagenes/pizza.jpeg");
-         SetImageLabel(etiImangenBebidas,"src/imagenes/Limonada.jpg");
-          SetImageLabel(etiFondo,"src/imagenes/menu2.jpg");
-         SetImageLabel(etipasta,"src/imagenes/pastas.jpg");
+        SetImageLabel(etiPizza,"src/imagenes/pizza.jpeg");
+        SetImageLabel(etiImangenBebidas,"src/imagenes/Limonada.jpg");
+        SetImageLabel(etiFondo,"src/imagenes/menu2.jpg");
+        SetImageLabel(etipasta,"src/imagenes/pastas.jpg");
            
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -35,9 +35,9 @@ public final class VentanaMenu extends javax.swing.JFrame {
 
             this.setLocation(x, y);
          
-        String saludo = "Saludos Sr(a)  " + VentanaRegistro.gestionVenta.getVenta().cliente.nombre + " Bienvenidos a Bambino";
+        String saludo = "Saludos Sr(a)  " + " Bienvenidos a Bambino";
         etiSaludo.setText(saludo);     
-    }
+    } 
     
 
     /**

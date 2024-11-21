@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class GestionCliente {
     private List<Cliente> clientes;
-    private static final String ARCHIVO_CLIENTES = "C:\\Users\\Usuario\\Desktop\\Luis Martinez\\Proyecto-de-aula\\Restaurante\\src\\co\\edu\\unicolombo\\pb\\proaula\\clientes.txt";
+    private static final String ARCHIVO_CLIENTES = "C:\\Users\\Usuario\\Desktop\\Proyecto-de-aula\\Restaurante\\src\\co\\edu\\unicolombo\\pb\\proaula\\clientes.txt";
     
     public GestionCliente(){
         clientes = new ArrayList<>();

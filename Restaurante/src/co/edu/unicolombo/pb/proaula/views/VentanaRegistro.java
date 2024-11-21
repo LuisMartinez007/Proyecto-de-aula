@@ -34,8 +34,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
         usuarioText.setVisible(false);
         jSeparator2.setVisible(false);
         etiGuardar.setVisible(false);
-        etiSiguiente.setVisible(false);
-        etiSiguiente.setEnabled(false);
         
         gestionCliente = new GestionCliente();
         gestionVenta = new GestionVentas();
@@ -64,7 +62,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
         etiIniciarSesion = new javax.swing.JLabel();
         etiRegistrarse = new javax.swing.JLabel();
         etiGuardar = new javax.swing.JLabel();
-        etiSiguiente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bambino");
@@ -224,28 +221,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
                 etiGuardarMouseExited(evt);
             }
         });
-        fondo.add(etiGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 80, 30));
-
-        etiSiguiente.setBackground(new java.awt.Color(255, 255, 255));
-        etiSiguiente.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        etiSiguiente.setForeground(new java.awt.Color(51, 51, 51));
-        etiSiguiente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiSiguiente.setText("Siguiente");
-        etiSiguiente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        etiSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        etiSiguiente.setOpaque(true);
-        etiSiguiente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                etiSiguienteMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                etiSiguienteMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                etiSiguienteMouseExited(evt);
-            }
-        });
-        fondo.add(etiSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 350, 80, 30));
+        fondo.add(etiGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, 80, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -318,9 +294,10 @@ public class VentanaRegistro extends javax.swing.JFrame {
         Cliente cliente = new Cliente(nombre,documento);
         gestionVenta.setCliente(cliente);
         if(etiGuardar.getText().equals("Guardar")){
+            if(gestionCliente.buscarCliente(documento) == null){
             gestionCliente.guardarCliente(cliente);
-            if(gestionCliente.buscarCliente(documento) == null){}
-            else{siguienteVentana();}
+            siguienteVentana();
+            }else{JOptionPane.showMessageDialog(null,"Ya existe un usuario con ese documento");}
         } else {
             if(gestionCliente.buscarCliente(documento) == null){
                 JOptionPane.showMessageDialog(null, "Usuario no encontrado");
@@ -328,20 +305,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_etiGuardarMouseClicked
-
-    private void etiSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiSiguienteMouseClicked
-        if(etiSiguiente.isEnabled()){
-        
-        }
-    }//GEN-LAST:event_etiSiguienteMouseClicked
-
-    private void etiSiguienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiSiguienteMouseEntered
-        etiSiguiente.setBackground(new Color(205,205,205));
-    }//GEN-LAST:event_etiSiguienteMouseEntered
-
-    private void etiSiguienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiSiguienteMouseExited
-        etiSiguiente.setBackground(new Color(255,255,255));
-    }//GEN-LAST:event_etiSiguienteMouseExited
 
     private void etiSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiSalirMouseClicked
         dispose();
@@ -358,7 +321,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
         jSeparator2.setVisible(false);
         etiGuardar.setVisible(true);
         etiGuardar.setText("Entrar");
-        etiSiguiente.setVisible(true);
     }//GEN-LAST:event_etiIniciarSesionMouseClicked
 
     private void etiRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiRegistrarseMouseClicked
@@ -372,7 +334,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
         jSeparator2.setVisible(true);
         etiGuardar.setVisible(true);
         etiGuardar.setText("Guardar");
-        etiSiguiente.setVisible(true);
     }//GEN-LAST:event_etiRegistrarseMouseClicked
 
     private void documentoTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_documentoTextMousePressed
@@ -473,7 +434,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel etiIniciarSesion;
     private javax.swing.JLabel etiRegistrarse;
     private javax.swing.JLabel etiSalir;
-    private javax.swing.JLabel etiSiguiente;
     private javax.swing.JLabel etiTitulo;
     private javax.swing.JLabel etiUsuario;
     private javax.swing.JPanel fondo;
