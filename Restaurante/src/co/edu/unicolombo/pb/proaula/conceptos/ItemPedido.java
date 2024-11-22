@@ -12,6 +12,7 @@ public class ItemPedido {
     public Producto producto;
     public float cantidad;
     public float subtotal;
+    public String candidad;
     
     public void calcularSubtotal(){
         subtotal = producto.precio * cantidad;

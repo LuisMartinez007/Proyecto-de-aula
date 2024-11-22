@@ -1,10 +1,13 @@
 
 package co.edu.unicolombo.pb.proaula.views;
 
+import co.edu.unicolombo.pb.proaula.conceptos.ItemPedido;
+import co.edu.unicolombo.pb.proaula.conceptos.ItemVenta;
 import co.edu.unicolombo.pb.proaula.conceptos.Producto;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -480,17 +483,26 @@ public final class VentanaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFacturaActionPerformed
-  float totalGeneral = VentanaRegistro.gestionVenta.calcularTotalGeneral();
+
+float totalGeneral = VentanaRegistro.gestionVenta.calcularTotalGeneral();
 double iva = 0.10;
 double propina = totalGeneral * iva;
 double totalPagar = totalGeneral + propina;
 
 
-String[][] datos = {
-    {"Total por los platos seleccionados", String.format("$%.2f", totalGeneral)},
-    {"Valor por el servicio (10%)", String.format("$%.2f", propina)},
-    {"Total a pagar", String.format("$%.2f", totalPagar)}
-};
+List<ItemPedido> items = VentanaRegistro.gestionVenta.getItems();
+String[][] datos = new String[items.size() + 3][2];
+int i = 0;
+for (ItemPedido item : items) {
+    datos[i][0] = item.producto.nombre + " (x " + item.cantidad + ")";
+    datos[i][1] = String.format("$%.2f", item.subtotal);
+    i++;
+}
+
+
+datos[i++] = new String[]{"Subtotal", String.format("$%.2f", totalGeneral)};
+datos[i++] = new String[]{"Valor por el servicio (10%)", String.format("$%.2f", propina)};
+datos[i] = new String[]{"Total a pagar", String.format("$%.2f", totalPagar)};
 
 
 String[] columnas = {"Descripción", "Valor"};
@@ -498,7 +510,6 @@ String[] columnas = {"Descripción", "Valor"};
 
 JTable tablaResumen = new JTable(datos, columnas);
 tablaResumen.setRowHeight(25);
-
 
 JScrollPane scrollPane = new JScrollPane(tablaResumen);
 tablaResumen.setFillsViewportHeight(true);
@@ -509,7 +520,7 @@ JOptionPane.showMessageDialog(this, scrollPane, "Resumen de la Orden", JOptionPa
     }//GEN-LAST:event_botonFacturaActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        // TODO add your handling code here:
+        
         VentanaRegistro ventana =new VentanaRegistro();
         ventana.setVisible(true);
         
