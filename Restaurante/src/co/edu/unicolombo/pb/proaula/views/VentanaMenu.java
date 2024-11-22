@@ -9,6 +9,8 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -478,26 +480,31 @@ public final class VentanaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFacturaActionPerformed
-        float totalGeneral = VentanaRegistro.gestionVenta.calcularTotalGeneral();
-        
-        double iva = 0.10;
-        
-        double propina = totalGeneral * iva;
-        
-        double totalPagar = totalGeneral + propina;
-        
-        
-        
-                
-        
-        
-        JOptionPane.showMessageDialog(this, """
-                                            RESUMEN DE LA ORDEN \n
-                                            Por la utilizacion de nuestro servicio se le adicionara el 10 % a la factura: \n
-                                            Total por los platos seleccionados: $""" + totalGeneral + "\n" +
-                                            "Valor por el servicio:  $" + propina + "\n" +
-                                            "El total a pagar por los platos seleccionados y el servicio es:  $" + totalPagar + "\n" + "\n" + 
-                                            "MUCHAS GRACIAS POR UTILIZAR NUESTRO SERVICIO Y PREFERIR BAMBINO"  );
+  float totalGeneral = VentanaRegistro.gestionVenta.calcularTotalGeneral();
+double iva = 0.10;
+double propina = totalGeneral * iva;
+double totalPagar = totalGeneral + propina;
+
+
+String[][] datos = {
+    {"Total por los platos seleccionados", String.format("$%.2f", totalGeneral)},
+    {"Valor por el servicio (10%)", String.format("$%.2f", propina)},
+    {"Total a pagar", String.format("$%.2f", totalPagar)}
+};
+
+
+String[] columnas = {"Descripción", "Valor"};
+
+
+JTable tablaResumen = new JTable(datos, columnas);
+tablaResumen.setRowHeight(25);
+
+
+JScrollPane scrollPane = new JScrollPane(tablaResumen);
+tablaResumen.setFillsViewportHeight(true);
+
+JOptionPane.showMessageDialog(this, scrollPane, "Resumen de la Orden", JOptionPane.INFORMATION_MESSAGE);
+
  
     }//GEN-LAST:event_botonFacturaActionPerformed
 
