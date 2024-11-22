@@ -4,7 +4,7 @@
  */
 package co.edu.unicolombo.pb.proaula.views;
 
-import co.edu.unicolombo.pb.proaula.conceptos.ItemVenta;
+import co.edu.unicolombo.pb.proaula.conceptos.ItemPedido;
 import co.edu.unicolombo.pb.proaula.conceptos.Producto;
 import java.awt.Image;
 import javax.swing.Icon;
@@ -125,9 +125,9 @@ public class VentanaVentaBebida extends javax.swing.JDialog {
         
         }else{
             
-            ItemVenta item = new ItemVenta();
+            ItemPedido item = new ItemPedido();
             item.producto = producto;
-            item.candidad = cantidad;
+            item.cantidad = cantidad;
             item.calcularSubtotal();
             VentanaRegistro.gestionVenta.agregarItem(item);
 

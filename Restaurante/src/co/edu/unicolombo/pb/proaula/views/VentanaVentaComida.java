@@ -4,9 +4,8 @@
  */
 package co.edu.unicolombo.pb.proaula.views;
 
-import co.edu.unicolombo.pb.proaula.conceptos.ItemVenta;
+import co.edu.unicolombo.pb.proaula.conceptos.ItemPedido;
 import co.edu.unicolombo.pb.proaula.conceptos.Producto;
-import co.edu.unicolombo.pb.proaula.conceptos.Venta;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -22,7 +21,6 @@ public class VentanaVentaComida extends javax.swing.JDialog {
     /**
      * Creates new form VistaPlato
      */ 
-    VentanaVentaComida vistaplato;
     float cantidad = 0;
     Producto producto;
     
@@ -163,9 +161,9 @@ public class VentanaVentaComida extends javax.swing.JDialog {
         
         }else{
             
-            ItemVenta item = new ItemVenta();
+            ItemPedido item = new ItemPedido();
             item.producto = producto;
-            item.candidad = cantidad;
+            item.cantidad = cantidad;
             item.calcularSubtotal();
             VentanaRegistro.gestionVenta.agregarItem(item);
 

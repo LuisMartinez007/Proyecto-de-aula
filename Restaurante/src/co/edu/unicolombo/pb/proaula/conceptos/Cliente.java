@@ -19,4 +19,13 @@ public class Cliente implements Serializable {
         this.nombre = nombre;
         this.documento = documento;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDocumento() {
+        return documento;
+    }
+    
 }
