@@ -1,8 +1,8 @@
 
 package co.edu.unicolombo.pb.proaula.views;
 
+import co.edu.unicolombo.pb.proaula.conceptos.ComandoPedido;
 import co.edu.unicolombo.pb.proaula.conceptos.ItemPedido;
-import co.edu.unicolombo.pb.proaula.conceptos.ItemVenta;
 import co.edu.unicolombo.pb.proaula.conceptos.Producto;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -21,13 +21,12 @@ import javax.swing.JTable;
  */
 public final class VentanaMenu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MenuRestaurante
-     */
+    public static ComandoPedido command;
     
     public VentanaMenu() {
         
         initComponents();
+        command = new ComandoPedido();
         SetImageLabel(etiPizza,"src/imagenes/pizza.jpeg");
         SetImageLabel(etiImangenBebidas,"src/imagenes/Limonada.jpg");
         SetImageLabel(etiFondo,"src/imagenes/menu2.jpg");
@@ -108,6 +107,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         signoPrecio15 = new javax.swing.JLabel();
         precioAmatriciana = new javax.swing.JLabel();
         etiSaludo = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         etiFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -363,7 +363,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
                 btnVolverActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 640, -1, -1));
+        getContentPane().add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 640, -1, -1));
         getContentPane().add(etipasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 200, 120));
 
         etiTagliatelle.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -474,6 +474,14 @@ public final class VentanaMenu extends javax.swing.JFrame {
         etiSaludo.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         etiSaludo.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(etiSaludo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 450, 30));
+
+        jButton1.setText("Pedir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 640, -1, -1));
 
         etiFondo.setBackground(new java.awt.Color(51, 51, 51));
         etiFondo.setToolTipText("Click en un plato para ordenar");
@@ -775,6 +783,12 @@ JOptionPane.showMessageDialog(this, scrollPane, "Resumen de la Orden", JOptionPa
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_etiAmatricianaMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        command.enviarACocina();
+        VentanaEstadoPedido ventana = new VentanaEstadoPedido();
+        ventana.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     public void SetImageLabel(JLabel nombrelabel, String root){
         ImageIcon imagen = new ImageIcon(root); 
@@ -838,6 +852,7 @@ JOptionPane.showMessageDialog(this, scrollPane, "Resumen de la Orden", JOptionPa
     private javax.swing.JLabel etiTagliatelle;
     private javax.swing.JLabel etiTelimon;
     private javax.swing.JLabel etipasta;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel pizzaBoscaiola;
     private javax.swing.JLabel pizzaCapricciosa;
     private javax.swing.JLabel pizzaFruttidimare;
