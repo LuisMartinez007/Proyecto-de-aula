@@ -1,2 +1,43 @@
 @startuml
+class Cliente{
+    + String nombre
+    + String documento
+}
+class ComandoPedido {
+    - String id
+    - Cliente cliente
+    - List<ItemPedido> items
+    - Date fechaCreacion
+    - EstadoPedido estado
+}
+class ItemPedido {
+    + Producto producto
+    + float cantidad
+    + float subtotal
+    + String candidad
+}
+class Producto {
+    +  String nombre
+    +  String[] ingredientes
+    +  float precio
+}
+class Venta {
+    + Cliente cliente
+    + Date fecha
+    + HashMap<String, ItemPedido> itemsVenta 
+}
+class EstadoPedido {
+    RECIBIDO
+    PREPARANDO
+    LISTO
+    ENTREGADO
+    CANCELADO
+}
+
+ComandoPedido "1" *-- "1" Cliente : tiene
+    ComandoPedido "1" *-- "1..*" ItemPedido : contiene
+    ComandoPedido "1" -- "1" EstadoPedido : tiene
+    ItemPedido "1" *-- "1" Producto : tiene
+    Venta "1" *-- "1" Cliente : tiene
+    Venta "1" *-- "0..*" ItemPedido : contiene
 @enduml
