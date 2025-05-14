@@ -96,9 +96,9 @@ public class VentanaEstadoPedido extends javax.swing.JFrame {
             String nombreProducto = item.getProducto().getNombre();
             
             if (esBebida(item)) {
-                estadosProductos.put(i, EstadoPedido.LISTO);
+                estadosProductos.put(i, EstadoPedido.COMPLETADO);
                 tiempoInicioBebidas.put(i, System.currentTimeMillis());
-                modelo.addRow(new Object[]{nombreProducto, EstadoPedido.LISTO});
+                modelo.addRow(new Object[]{nombreProducto, EstadoPedido.COMPLETADO});
             } else {
                 estadosProductos.put(i, VentanaMenu.command.getEstado());
                 modelo.addRow(new Object[]{nombreProducto, VentanaMenu.command.getEstado()});
@@ -137,7 +137,7 @@ public class VentanaEstadoPedido extends javax.swing.JFrame {
                 
                 if (esBebida(item)) {
                     // Lógica para bebidas
-                    if (estadoActual == EstadoPedido.LISTO) {
+                    if (estadoActual == EstadoPedido.COMPLETADO) {
                         Long tiempoInicio = tiempoInicioBebidas.get(i);
                         if (tiempoActual - tiempoInicio >= TIEMPO_ENTREGA_BEBIDAS) {
                             estadosProductos.put(i, EstadoPedido.ENTREGADO);
@@ -148,13 +148,13 @@ public class VentanaEstadoPedido extends javax.swing.JFrame {
                     EstadoPedido nuevoEstado = estadoActual;
                     
                     switch (estadoActual) {
-                        case RECIBIDO:
-                            nuevoEstado = EstadoPedido.PREPARANDO;
+                        case PENDIENTE:
+                            nuevoEstado = EstadoPedido.EN_PROCESO;
                             break;
-                        case PREPARANDO:
-                            nuevoEstado = EstadoPedido.LISTO;
+                        case EN_PROCESO:
+                            nuevoEstado = EstadoPedido.COMPLETADO;
                             break;
-                        case LISTO:
+                        case COMPLETADO:
                             nuevoEstado = EstadoPedido.ENTREGADO;
                             break;
                         default:

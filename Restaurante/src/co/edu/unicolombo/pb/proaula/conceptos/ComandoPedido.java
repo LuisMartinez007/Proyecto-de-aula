@@ -20,7 +20,7 @@ public class ComandoPedido {
     private EstadoPedido estado;
 
     public void enviarACocina() {
-        this.estado = EstadoPedido.RECIBIDO;
+        this.estado = EstadoPedido.PENDIENTE;
     }
 
     public void actualizarEstado(EstadoPedido nuevoEstado) {

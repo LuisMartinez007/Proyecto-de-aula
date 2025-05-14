@@ -9,8 +9,9 @@ package co.edu.unicolombo.pb.proaula.Constants;
  * @author Usuario
  */
 public enum EstadoPedido {
-    RECIBIDO, 
-    PREPARANDO, 
-    LISTO, 
-    ENTREGADO
+    PENDIENTE, 
+    EN_PROCESO, 
+    COMPLETADO,
+    ENTREGADO,
+    CANCELADO
 }
