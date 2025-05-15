@@ -63,9 +63,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
         etiIniciarSesion = new javax.swing.JLabel();
         etiRegistrarse = new javax.swing.JLabel();
         etiGuardar = new javax.swing.JLabel();
-        btnEliminar = new javax.swing.JButton();
-        btnActualizar = new javax.swing.JButton();
-        btnListar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bambino");
@@ -86,7 +83,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
         etiUsuario.setText("USUARIO");
         fondo.add(etiUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 140, 24));
 
-        documentoText.setBackground(new java.awt.Color(255, 255, 255));
         documentoText.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         documentoText.setForeground(new java.awt.Color(102, 102, 102));
         documentoText.setText("Ingrese su número de documento");
@@ -115,7 +111,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
         fondo.add(etiDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 140, 24));
         fondo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 370, -1));
 
-        usuarioText.setBackground(new java.awt.Color(255, 255, 255));
         usuarioText.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         usuarioText.setForeground(new java.awt.Color(102, 102, 102));
         usuarioText.setText("Ingrese su nombre de usuario");
@@ -226,36 +221,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
             }
         });
         fondo.add(etiGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 80, 30));
-
-        btnEliminar.setBackground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setForeground(new java.awt.Color(0, 0, 0));
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-        fondo.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, -1, -1));
-
-        btnActualizar.setBackground(new java.awt.Color(255, 255, 255));
-        btnActualizar.setForeground(new java.awt.Color(0, 0, 0));
-        btnActualizar.setText("Actualizar");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
-            }
-        });
-        fondo.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, -1, -1));
-
-        btnListar.setBackground(new java.awt.Color(255, 255, 255));
-        btnListar.setForeground(new java.awt.Color(0, 0, 0));
-        btnListar.setText("Listar");
-        btnListar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListarActionPerformed(evt);
-            }
-        });
-        fondo.add(btnListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -400,42 +365,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_documentoTextFocusGained
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-         btnEliminar.addActionListener(e -> {
-    String documento = JOptionPane.showInputDialog(this, "Ingrese el documento del cliente a eliminar:");
-    if (documento != null && !documento.trim().isEmpty()) {
-        boolean eliminado = gestionCliente.eliminarCliente(documento);
-        if (eliminado) {
-            JOptionPane.showMessageDialog(this, "Cliente eliminado exitosamente.");
-        }
-    }
-});
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-       btnActualizar.addActionListener(e -> {
-    String documento = JOptionPane.showInputDialog(this, "Ingrese el documento del cliente a actualizar:");
-    if (documento != null && !documento.trim().isEmpty()) {
-        String nuevoNombre = JOptionPane.showInputDialog(this, "Ingrese el nuevo nombre del cliente:");
-        if (nuevoNombre != null && !nuevoNombre.trim().isEmpty()) {
-            boolean actualizado = gestionCliente.actualizarCliente(documento, nuevoNombre);
-            if (actualizado) {
-                JOptionPane.showMessageDialog(this, "Cliente actualizado exitosamente.");
-            }
-        }
-    }
-});
-    }//GEN-LAST:event_btnActualizarActionPerformed
-
-    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        btnListar.addActionListener(e -> {
-    List<Cliente> clientes = gestionCliente.listarClientes();
-    VentanaListarClientes ventanaListar = new VentanaListarClientes(clientes);
-    ventanaListar.setVisible(true);
-});
-
-    }//GEN-LAST:event_btnListarActionPerformed
-
     
     public static boolean validarCaracteres(String datos) {
         return datos.matches("[a-z A-Z]*");
@@ -497,9 +426,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnListar;
     private javax.swing.JTextField documentoText;
     private javax.swing.JLabel etiDocumento;
     private javax.swing.JLabel etiGuardar;

@@ -38,9 +38,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
             int y = (int) ((screenSize.getHeight() - this.getHeight()) / 2);
 
             this.setLocation(x, y);
-         
-        String saludo = "Saludos Sr(a)  " + " Bienvenidos a Bambino";
-        etiSaludo.setText(saludo);     
+           
     } 
     
 
@@ -106,7 +104,6 @@ public final class VentanaMenu extends javax.swing.JFrame {
         etiAmatriciana = new javax.swing.JLabel();
         signoPrecio15 = new javax.swing.JLabel();
         precioAmatriciana = new javax.swing.JLabel();
-        etiSaludo = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         etiFondo = new javax.swing.JLabel();
 
@@ -114,7 +111,10 @@ public final class VentanaMenu extends javax.swing.JFrame {
         setTitle("Bambino");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(etiPizza, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 200, 120));
+
+        etiPizza.setForeground(new java.awt.Color(255, 255, 255));
+        etiPizza.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        getContentPane().add(etiPizza, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 200, 120));
 
         pizzaNapolitana.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         pizzaNapolitana.setForeground(new java.awt.Color(255, 255, 255));
@@ -136,7 +136,9 @@ public final class VentanaMenu extends javax.swing.JFrame {
         signoPrecio.setForeground(new java.awt.Color(255, 255, 255));
         signoPrecio.setText("...$");
         getContentPane().add(signoPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, -1, 20));
-        getContentPane().add(etiImangenBebidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 200, 120));
+
+        etiImangenBebidas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        getContentPane().add(etiImangenBebidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 200, 120));
 
         pizzaMargarita.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         pizzaMargarita.setForeground(new java.awt.Color(255, 255, 255));
@@ -364,6 +366,8 @@ public final class VentanaMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 640, -1, -1));
+
+        etipasta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         getContentPane().add(etipasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 200, 120));
 
         etiTagliatelle.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -470,10 +474,6 @@ public final class VentanaMenu extends javax.swing.JFrame {
         precioAmatriciana.setForeground(new java.awt.Color(255, 255, 255));
         precioAmatriciana.setText("27000");
         getContentPane().add(precioAmatriciana, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 540, -1, -1));
-
-        etiSaludo.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        etiSaludo.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(etiSaludo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 450, 30));
 
         jButton1.setText("Pedir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -785,9 +785,11 @@ JOptionPane.showMessageDialog(this, scrollPane, "Resumen de la Orden", JOptionPa
     }//GEN-LAST:event_etiAmatricianaMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
         command.enviarACocina();
-        VentanaEstadoPedido ventana = new VentanaEstadoPedido();
-        ventana.setVisible(true);
+        VentanaElegirMesa ventana1 = new VentanaElegirMesa();
+        ventana1.setVisible(true);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
     
     public void SetImageLabel(JLabel nombrelabel, String root){
@@ -848,7 +850,6 @@ JOptionPane.showMessageDialog(this, scrollPane, "Resumen de la Orden", JOptionPa
     private javax.swing.JLabel etiPepsi;
     private javax.swing.JLabel etiPizza;
     private javax.swing.JLabel etiPuttanesca;
-    private javax.swing.JLabel etiSaludo;
     private javax.swing.JLabel etiTagliatelle;
     private javax.swing.JLabel etiTelimon;
     private javax.swing.JLabel etipasta;
