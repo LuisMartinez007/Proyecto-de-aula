@@ -4,7 +4,7 @@
  */
 package co.edu.unicolombo.pb.proaula.conceptos;
 
-import co.edu.unicolombo.pb.proaula.Constants.EstadoPedido;
+import co.edu.unicolombo.pb.proaula.Constants.EstadoVentaEnum;
 import java.util.Date;
 import java.util.List;
 
@@ -15,15 +15,15 @@ import java.util.List;
 public class ComandoPedido {
     private String id;
     private Cliente cliente;
-    private List<ItemPedido> items;
+    private List<ItemVenta> items;
     private Date fechaCreacion;
-    private EstadoPedido estado;
+    private EstadoVentaEnum estado;
 
     public void enviarACocina() {
-        this.estado = EstadoPedido.PENDIENTE;
+        this.estado = EstadoVentaEnum.PENDIENTE;
     }
 
-    public void actualizarEstado(EstadoPedido nuevoEstado) {
+    public void actualizarEstado(EstadoVentaEnum nuevoEstado) {
         this.estado = nuevoEstado;
     }
     
@@ -35,7 +35,7 @@ public class ComandoPedido {
         return cliente;
     }
 
-    public List<ItemPedido> getItems() {
+    public List<ItemVenta> getItems() {
         return items;
     }
 
@@ -43,7 +43,7 @@ public class ComandoPedido {
         return fechaCreacion;
     }
 
-    public EstadoPedido getEstado() {
+    public EstadoVentaEnum getEstado() {
         return estado;
     }
 
@@ -59,7 +59,7 @@ public class ComandoPedido {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public void setEstado(EstadoPedido estado) {
+    public void setEstado(EstadoVentaEnum estado) {
         this.estado = estado;
     }
     

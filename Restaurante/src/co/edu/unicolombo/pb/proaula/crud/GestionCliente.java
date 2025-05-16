@@ -15,11 +15,10 @@ import javax.swing.JOptionPane;
  * @author Usuario
  */
 public class GestionCliente {
-    private List<Cliente> clientes;
+    private static List<Cliente> clientes = new ArrayList<>();
     private static final String ARCHIVO_CLIENTES = "C:\\Users\\yulin\\OneDrive\\Escritorio\\clientes.txt";
     
     public GestionCliente(){
-        clientes = new ArrayList<>();
         cargarClientes();
     }
     

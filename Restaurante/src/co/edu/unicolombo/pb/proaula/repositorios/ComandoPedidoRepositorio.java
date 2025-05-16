@@ -4,7 +4,7 @@
  */
 package co.edu.unicolombo.pb.proaula.repositorios;
 
-import co.edu.unicolombo.pb.proaula.Constants.EstadoPedido;
+import co.edu.unicolombo.pb.proaula.Constants.EstadoVentaEnum;
 import co.edu.unicolombo.pb.proaula.conceptos.ComandoPedido;
 
 /**
@@ -13,5 +13,5 @@ import co.edu.unicolombo.pb.proaula.conceptos.ComandoPedido;
  */
 public interface ComandoPedidoRepositorio {
     void guardar(ComandoPedido pedido);
-    void actualizarEstado(String pedidoId, EstadoPedido estado);
+    void actualizarEstado(String pedidoId, EstadoVentaEnum estado);
 }

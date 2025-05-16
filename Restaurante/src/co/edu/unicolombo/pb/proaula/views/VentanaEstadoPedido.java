@@ -4,9 +4,11 @@
  */
 package co.edu.unicolombo.pb.proaula.views;
 
-import co.edu.unicolombo.pb.proaula.Constants.EstadoPedido;
+import co.edu.unicolombo.pb.proaula.Constants.EstadoVentaEnum;
 import co.edu.unicolombo.pb.proaula.conceptos.ComandoPedido;
-import co.edu.unicolombo.pb.proaula.conceptos.ItemPedido;
+import co.edu.unicolombo.pb.proaula.conceptos.ItemVenta;
+import co.edu.unicolombo.pb.proaula.conceptos.Producto;
+import co.edu.unicolombo.pb.proaula.crud.GestionVentas;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -23,10 +25,12 @@ public class VentanaEstadoPedido extends javax.swing.JFrame {
     
     private DefaultTableModel modelo;
     private Timer timer;
-    private Map<Integer, EstadoPedido> estadosProductos;
+    private Map<Integer, EstadoVentaEnum> estadosProductos;
     private Map<Integer, Long> tiempoInicioBebidas;
     private static final long TIEMPO_ENTREGA_BEBIDAS = 60000; // 1:30 minutos
     private static final String[] bebidas = {"Te de limon", "Limonada", "Coca cola", "Pepsi", "Agua", "Agua mineral"};
+    Producto producto;
+    GestionVentas gestionVentas;
     
     public VentanaEstadoPedido() {
         initComponents();
@@ -88,17 +92,17 @@ public class VentanaEstadoPedido extends javax.swing.JFrame {
         modelo.addColumn("Estado");
         
         tablaPedido.setModel(modelo);
-        
-        List<ItemPedido> items = VentanaRegistro.gestionVenta.getItems();
+         
+        List<ItemVenta> items = gestionVentas.getItems();
         
         for (int i = 0; i < items.size(); i++) {
-            ItemPedido item = items.get(i);
+            ItemVenta item = items.get(i);
             String nombreProducto = item.getProducto().getNombre();
             
             if (esBebida(item)) {
-                estadosProductos.put(i, EstadoPedido.COMPLETADO);
+                estadosProductos.put(i, EstadoVentaEnum.COMPLETADO);
                 tiempoInicioBebidas.put(i, System.currentTimeMillis());
-                modelo.addRow(new Object[]{nombreProducto, EstadoPedido.COMPLETADO});
+                modelo.addRow(new Object[]{nombreProducto, EstadoVentaEnum.COMPLETADO});
             } else {
                 estadosProductos.put(i, VentanaMenu.command.getEstado());
                 modelo.addRow(new Object[]{nombreProducto, VentanaMenu.command.getEstado()});
@@ -106,8 +110,8 @@ public class VentanaEstadoPedido extends javax.swing.JFrame {
         }
     }
     
-    private boolean esBebida(ItemPedido item) {
-        String nombreProducto = item.getProducto().getNombre();
+    private boolean esBebida(ItemVenta item) {
+        String nombreProducto = producto.nombre;
         return Arrays.asList(bebidas).contains(nombreProducto);
     }
     
@@ -123,39 +127,39 @@ public class VentanaEstadoPedido extends javax.swing.JFrame {
     
     private void actualizarEstados() {
         java.awt.EventQueue.invokeLater(() -> {
-            List<ItemPedido> items = VentanaRegistro.gestionVenta.getItems();
+            List<ItemVenta> items = VentanaRegistro.gestionVenta.getItems();
             long tiempoActual = System.currentTimeMillis();
             
             for (int i = 0; i < items.size(); i++) {
                 // Si ya está entregado, no hacemos nada
-                if (estadosProductos.get(i) == EstadoPedido.ENTREGADO) {
+                if (estadosProductos.get(i) == EstadoVentaEnum.ENTREGADO) {
                     continue;
                 }
                 
-                ItemPedido item = items.get(i);
-                EstadoPedido estadoActual = estadosProductos.get(i);
+                ItemVenta item = items.get(i);
+                EstadoVentaEnum estadoActual = estadosProductos.get(i);
                 
                 if (esBebida(item)) {
                     // Lógica para bebidas
-                    if (estadoActual == EstadoPedido.COMPLETADO) {
+                    if (estadoActual == EstadoVentaEnum.COMPLETADO) {
                         Long tiempoInicio = tiempoInicioBebidas.get(i);
                         if (tiempoActual - tiempoInicio >= TIEMPO_ENTREGA_BEBIDAS) {
-                            estadosProductos.put(i, EstadoPedido.ENTREGADO);
-                            modelo.setValueAt(EstadoPedido.ENTREGADO, i, 1);
+                            estadosProductos.put(i, EstadoVentaEnum.ENTREGADO);
+                            modelo.setValueAt(EstadoVentaEnum.ENTREGADO, i, 1);
                         }
                     }
                 } else {
-                    EstadoPedido nuevoEstado = estadoActual;
+                    EstadoVentaEnum nuevoEstado = estadoActual;
                     
                     switch (estadoActual) {
                         case PENDIENTE:
-                            nuevoEstado = EstadoPedido.EN_PROCESO;
+                            nuevoEstado = EstadoVentaEnum.EN_PROCESO;
                             break;
                         case EN_PROCESO:
-                            nuevoEstado = EstadoPedido.COMPLETADO;
+                            nuevoEstado = EstadoVentaEnum.COMPLETADO;
                             break;
                         case COMPLETADO:
-                            nuevoEstado = EstadoPedido.ENTREGADO;
+                            nuevoEstado = EstadoVentaEnum.ENTREGADO;
                             break;
                         default:
                             break;

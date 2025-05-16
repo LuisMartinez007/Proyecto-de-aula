@@ -4,14 +4,12 @@
  */
 package co.edu.unicolombo.pb.proaula.crud;
 
-import co.edu.unicolombo.pb.proaula.conceptos.Cliente;
-import co.edu.unicolombo.pb.proaula.conceptos.ItemPedido;
+import co.edu.unicolombo.pb.proaula.Constants.EstadoVentaEnum;
 import co.edu.unicolombo.pb.proaula.conceptos.Venta;
-import java.util.List;
-
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  *
@@ -19,57 +17,46 @@ import java.util.HashMap;
  */
 public class GestionVentas {
 
-    Venta venta;
+    private static Queue<Venta> ventas;
+
     
     public GestionVentas() {
-        venta = new Venta();
-        venta.itemsVenta = new HashMap<>();
-        venta.fecha = new Date();
-    }
-
-    public void agregarItem(ItemPedido item) {
-        venta.itemsVenta.put(item.producto.nombre, item);
-    }
-
-    public ItemPedido buscarItem(String nombreProducto) throws Exception {
-        if (!venta.itemsVenta.containsKey(nombreProducto)) {
-            throw new Exception("El producto no existe en este venta");
+        if(ventas == null){
+            ventas = new LinkedList<>();
         }
-        return venta.itemsVenta.get(nombreProducto);
     }
 
-    public void quitarItem(String nombreProducto) throws Exception {
-        if (!venta.itemsVenta.containsKey(nombreProducto)) {
-            throw new Exception("El producto no existe en este venta");
+    public void agregar(Venta venta){
+        var existe = ventas.stream()
+                .anyMatch(v -> v.getId().equals(venta.getId()));
+        if (existe) {
+            throw new RuntimeException("La venta ya existe:"+ venta.getId());
         }
-        venta.itemsVenta.remove(nombreProducto);
+        ventas.offer(venta);
     }
 
-    public void editarItem(ItemPedido item) throws Exception {
-        if (!venta.itemsVenta.containsKey(item.producto.nombre)) {
-            throw new Exception("El producto no existe en este venta");
+    public Venta buscarPorId(Integer id){
+         var respuesta = ventas.stream()
+                .filter(v -> v.getId().equals(id)).findFirst();
+        if (respuesta.isEmpty()) {
+            throw new RuntimeException("La venta no existe:"+ id);
         }
-        venta.itemsVenta.remove(item.producto.nombre);
-    }
-
-    public Venta getVenta() {
-        return venta;
+        return respuesta.get();
     }
     
-    public List<ItemPedido> getItems(){
-        return new ArrayList<>(venta.itemsVenta.values());
+     public Venta primeraEnCola(){
+         
+        return ventas.peek();
     }
-    
-    public void setCliente(Cliente cliente){
-        venta.cliente = cliente;
+     
+    public Venta finalizarVenta(){
+        primeraEnCola().setEstado(EstadoVentaEnum.ENTREGADO);
+        return ventas.poll();
     }
 
-    public float calcularTotalGeneral(){
-        var items = getItems();
-        float totalGeneral = 0;
-        for (ItemPedido item : items) {
-           totalGeneral += item.subtotal;
-        }
-        return totalGeneral;
+    public Queue<Venta> getVentas() {
+        return ventas;
     }
+
+    
 }

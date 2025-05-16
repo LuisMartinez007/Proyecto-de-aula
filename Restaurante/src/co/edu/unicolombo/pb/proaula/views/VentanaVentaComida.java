@@ -4,11 +4,14 @@
  */
 package co.edu.unicolombo.pb.proaula.views;
 
-import co.edu.unicolombo.pb.proaula.conceptos.ItemPedido;
+import co.edu.unicolombo.pb.proaula.conceptos.ItemVenta;
 import co.edu.unicolombo.pb.proaula.conceptos.Producto;
+import co.edu.unicolombo.pb.proaula.conceptos.Venta;
+import co.edu.unicolombo.pb.proaula.crud.GestionVentas;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -20,39 +23,43 @@ public class VentanaVentaComida extends javax.swing.JDialog {
 
     /**
      * Creates new form VistaPlato
-     */ 
+     */
     float cantidad = 0;
     Producto producto;
+    GestionVentas gestionVentas;
     
-    public VentanaVentaComida(Producto producto) {
+    public VentanaVentaComida(JFrame ventanaMenu, Producto producto) {
+         super(ventanaMenu, true);
+        gestionVentas = new GestionVentas();
         initComponents();
-        plato.setText(producto.nombre);
+
+        lblPlato.setText(producto.nombre);
         primerIngrediente.setText(producto.ingredientes[0]);
         segundoIngrediente.setText(producto.ingredientes[1]);
         tercerIngrediente.setText(producto.ingredientes[2]);
-        SetImageLabel(jLabel1,"src/imagenes/fondo_cuenta.jpg");
-        etiPrecio.setText("$"+producto.precio);
+        SetImageLabel(jLabel1, "src/imagenes/fondo_cuenta.jpg");
+        etiPrecio.setText("$" + producto.precio);
         this.producto = producto;
-        if(primerIngrediente.getText()== null){
+        if (primerIngrediente.getText() == null) {
             primerIngrediente.setEnabled(false);
             primerIngrediente.setVisible(false);
         }
-        if(segundoIngrediente.getText()== null){
+        if (segundoIngrediente.getText() == null) {
             segundoIngrediente.setEnabled(false);
             segundoIngrediente.setVisible(false);
         }
-        if(tercerIngrediente.getText()== null){
+        if (tercerIngrediente.getText() == null) {
             tercerIngrediente.setEnabled(false);
             tercerIngrediente.setVisible(false);
         }
+
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        plato = new javax.swing.JLabel();
+        lblPlato = new javax.swing.JLabel();
         etiCantidad = new javax.swing.JLabel();
         cantidadProducto = new javax.swing.JComboBox<>();
         primerIngrediente = new javax.swing.JCheckBox();
@@ -69,8 +76,8 @@ public class VentanaVentaComida extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        plato.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        getContentPane().add(plato, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 240, 24));
+        lblPlato.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        getContentPane().add(lblPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 240, 24));
 
         etiCantidad.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         etiCantidad.setText("¿Cuantas desea?");
@@ -146,7 +153,7 @@ public class VentanaVentaComida extends javax.swing.JDialog {
     }//GEN-LAST:event_cantidadProductoActionPerformed
 
     private void segundoIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundoIngredienteActionPerformed
-     
+
     }//GEN-LAST:event_segundoIngredienteActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -155,22 +162,22 @@ public class VentanaVentaComida extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        
-        if(cantidad==0){
-            JOptionPane.showMessageDialog(null, "La cantidad no puede ser 0");
-        
-        }else{
-            
-            ItemPedido item = new ItemPedido();
-            item.producto = producto;
-            item.cantidad = cantidad;
-            item.calcularSubtotal();
-            VentanaRegistro.gestionVenta.agregarItem(item);
 
-            JOptionPane.showMessageDialog(null, "El valor por la cantidad selecionada es: $" + item.subtotal);
-        this.dispose();
+        if (cantidad == 0) {
+            JOptionPane.showMessageDialog(null, "La cantidad no puede ser 0");
+            return;
         }
         
+        ItemVenta item = new ItemVenta();
+        item.producto = producto;
+        item.cantidad = cantidad;
+        item.calcularSubtotal();
+        var venta = gestionVentas.primeraEnCola();
+        venta.agregarItem(item);
+
+        JOptionPane.showMessageDialog(null, "El valor por la cantidad selecionada es: $" + item.calcularSubtotal());
+        this.dispose();
+
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void primerIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primerIngredienteActionPerformed
@@ -180,18 +187,17 @@ public class VentanaVentaComida extends javax.swing.JDialog {
     private void primerIngredienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_primerIngredienteMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_primerIngredienteMouseClicked
-        
-    public void SetImageLabel(JLabel nombrelabel, String root){
-        ImageIcon imagen = new ImageIcon(root); 
+
+    public void SetImageLabel(JLabel nombrelabel, String root) {
+        ImageIcon imagen = new ImageIcon(root);
         Icon icon = new ImageIcon(
                 imagen.getImage().getScaledInstance(nombrelabel.getWidth(), nombrelabel.getHeight(), Image.SCALE_DEFAULT));
         nombrelabel.setIcon(icon);
         this.repaint();
     }
-    
 
     public static void main(String args[]) {
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -220,7 +226,7 @@ public class VentanaVentaComida extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VentanaVentaComida dialog = new VentanaVentaComida(null);
+                VentanaVentaComida dialog = new VentanaVentaComida(null, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -242,7 +248,7 @@ public class VentanaVentaComida extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
-    public static javax.swing.JLabel plato;
+    public static javax.swing.JLabel lblPlato;
     private javax.swing.JCheckBox primerIngrediente;
     private javax.swing.JCheckBox segundoIngrediente;
     private javax.swing.JCheckBox tercerIngrediente;

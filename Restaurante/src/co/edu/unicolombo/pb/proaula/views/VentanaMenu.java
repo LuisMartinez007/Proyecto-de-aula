@@ -1,12 +1,17 @@
-
 package co.edu.unicolombo.pb.proaula.views;
 
+import co.edu.unicolombo.pb.proaula.Constants.EstadoVentaEnum;
+import co.edu.unicolombo.pb.proaula.conceptos.Cliente;
 import co.edu.unicolombo.pb.proaula.conceptos.ComandoPedido;
-import co.edu.unicolombo.pb.proaula.conceptos.ItemPedido;
+import co.edu.unicolombo.pb.proaula.conceptos.ItemVenta;
 import co.edu.unicolombo.pb.proaula.conceptos.Producto;
+import co.edu.unicolombo.pb.proaula.conceptos.Venta;
+import co.edu.unicolombo.pb.proaula.crud.GestionCliente;
+import co.edu.unicolombo.pb.proaula.crud.GestionVentas;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.Date;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -22,25 +27,29 @@ import javax.swing.JTable;
 public final class VentanaMenu extends javax.swing.JFrame {
 
     public static ComandoPedido command;
-    
-    public VentanaMenu() {
-        
+    public GestionCliente gestionCliente;
+    public GestionVentas gestionVenta;
+    public Cliente clienteActual;
+
+    public VentanaMenu(Cliente cliente) {
+        gestionCliente = new GestionCliente();
+        gestionVenta = new GestionVentas();
+        this.clienteActual = cliente;
         initComponents();
         command = new ComandoPedido();
-        SetImageLabel(etiPizza,"src/imagenes/pizza.jpeg");
-        SetImageLabel(etiImangenBebidas,"src/imagenes/Limonada.jpg");
-        SetImageLabel(etiFondo,"src/imagenes/menu2.jpg");
-        SetImageLabel(etipasta,"src/imagenes/pastas.jpg");
-           
+        SetImageLabel(etiPizza, "src/imagenes/pizza.jpeg");
+        SetImageLabel(etiImangenBebidas, "src/imagenes/Limonada.jpg");
+        SetImageLabel(etiFondo, "src/imagenes/menu2.jpg");
+        SetImageLabel(etipasta, "src/imagenes/pastas.jpg");
+
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-            int x = (int) ((screenSize.getWidth() - this.getWidth()) / 2);
-            int y = (int) ((screenSize.getHeight() - this.getHeight()) / 2);
+        int x = (int) ((screenSize.getWidth() - this.getWidth()) / 2);
+        int y = (int) ((screenSize.getHeight() - this.getHeight()) / 2);
 
-            this.setLocation(x, y);
-           
-    } 
-    
+        this.setLocation(x, y);
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -107,7 +116,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         etiFondo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Bambino");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -491,314 +500,290 @@ public final class VentanaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFacturaActionPerformed
+        var venta = gestionVenta.primeraEnCola();
+        float totalGeneral = venta.calcularTotalGeneral();
+        double porcentajePropina = 0.10;
+        double propina = totalGeneral * porcentajePropina;
+        double totalPagar = totalGeneral + propina;
 
-float totalGeneral = VentanaRegistro.gestionVenta.calcularTotalGeneral();
-double iva = 0.10;
-double propina = totalGeneral * iva;
-double totalPagar = totalGeneral + propina;
+        var items = venta.getItemsVenta();
+        String[][] datos = new String[items.size() + 3][2];
+        int i = 0;
+        for (ItemVenta item : items) {
+            datos[i][0] = item.producto.nombre + " (x " + item.cantidad + ")";
+            datos[i][1] = String.format("$%.2f", item.calcularSubtotal());
+            i++;
+        }
 
+        datos[i++] = new String[]{"Subtotal", String.format("$%.2f", totalGeneral)};
+        datos[i++] = new String[]{"Valor por el servicio (10%)", String.format("$%.2f", propina)};
+        datos[i] = new String[]{"Total a pagar", String.format("$%.2f", totalPagar)};
 
-List<ItemPedido> items = VentanaRegistro.gestionVenta.getItems();
-String[][] datos = new String[items.size() + 3][2];
-int i = 0;
-for (ItemPedido item : items) {
-    datos[i][0] = item.producto.nombre + " (x " + item.cantidad + ")";
-    datos[i][1] = String.format("$%.2f", item.subtotal);
-    i++;
-}
+        String[] columnas = {"Descripción", "Valor"};
 
+        JTable tablaResumen = new JTable(datos, columnas);
+        tablaResumen.setRowHeight(25);
 
-datos[i++] = new String[]{"Subtotal", String.format("$%.2f", totalGeneral)};
-datos[i++] = new String[]{"Valor por el servicio (10%)", String.format("$%.2f", propina)};
-datos[i] = new String[]{"Total a pagar", String.format("$%.2f", totalPagar)};
+        JScrollPane scrollPane = new JScrollPane(tablaResumen);
+        tablaResumen.setFillsViewportHeight(true);
 
+        JOptionPane.showMessageDialog(this, scrollPane, "Resumen de la Orden", JOptionPane.INFORMATION_MESSAGE);
+        dispose();
+        var ventanaRegistro = new VentanaRegistro();
+        ventanaRegistro.setLocationRelativeTo(null);
+        ventanaRegistro.setVisible(true);
 
-String[] columnas = {"Descripción", "Valor"};
-
-
-JTable tablaResumen = new JTable(datos, columnas);
-tablaResumen.setRowHeight(25);
-
-JScrollPane scrollPane = new JScrollPane(tablaResumen);
-tablaResumen.setFillsViewportHeight(true);
-
-JOptionPane.showMessageDialog(this, scrollPane, "Resumen de la Orden", JOptionPane.INFORMATION_MESSAGE);
-
- 
     }//GEN-LAST:event_botonFacturaActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        
-        VentanaRegistro ventana =new VentanaRegistro();
+
+        VentanaRegistro ventana = new VentanaRegistro();
         ventana.setVisible(true);
-        
+
         this.dispose();
-            
+
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    
+
     private void pizzaNapolitanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pizzaNapolitanaMouseClicked
         // TODO add your handling code here:
-        Producto producto = new Producto();
-        producto.ingredientes= new String[3];
-        producto.nombre=pizzaNapolitana.getText();
-        producto.precio=Float.parseFloat(precPizzaNapolitana.getText());
-        
-        producto.ingredientes[0]="Ajo";
-        producto.ingredientes[1]="Perejil";
-        producto.ingredientes[2]="Hierbas";
-        
-        
-        VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
-        
+        Producto producto = new Producto(pizzaNapolitana.getText());
+        producto.ingredientes = new String[3];
+        producto.precio = Float.parseFloat(precPizzaNapolitana.getText());
+        producto.ingredientes[0] = "Ajo";
+        producto.ingredientes[1] = "Perejil";
+        producto.ingredientes[2] = "Hierbas";
+
+        var venta = crearVenta();
+        VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
-        
-       
+
+
     }//GEN-LAST:event_pizzaNapolitanaMouseClicked
 
     private void pizzaMargaritaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pizzaMargaritaMouseClicked
         // TODO add your handling code here:
-        Producto producto = new Producto();
-        producto.ingredientes= new String[3];
-        producto.nombre=pizzaMargarita.getText();
-        producto.precio=Float.parseFloat(precPizzaMargarita.getText());
+        Producto producto = new Producto(pizzaMargarita.getText());
+        producto.ingredientes = new String[3];
+        producto.precio = Float.parseFloat(precPizzaMargarita.getText());
+
+        producto.ingredientes[0] = "Ají";
+        producto.ingredientes[1] = "Tomate";
+        producto.ingredientes[2] = "Oregano";
         
-        producto.ingredientes[0]="Ají";
-        producto.ingredientes[1]="Tomate";
-        producto.ingredientes[2]="Oregano";
-        
-        
-           VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
-        
+        var venta = crearVenta();
+        VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_pizzaMargaritaMouseClicked
 
     private void pizzaCapricciosaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pizzaCapricciosaMouseClicked
-        Producto producto = new Producto();
-        producto.ingredientes= new String[3];
-        producto.nombre=pizzaCapricciosa.getText();
-        producto.precio=Float.parseFloat(precPizzaCapricciosa.getText());
-        
-        producto.ingredientes[0]="Albahaca";
-        producto.ingredientes[1]="Alcachofa";
-        producto.ingredientes[2]="Champiñones";
-        
-        
-         VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
-        
+        Producto producto = new Producto(pizzaCapricciosa.getText());
+        producto.ingredientes = new String[3];
+        producto.precio = Float.parseFloat(precPizzaCapricciosa.getText());
+
+        producto.ingredientes[0] = "Albahaca";
+        producto.ingredientes[1] = "Alcachofa";
+        producto.ingredientes[2] = "Champiñones";
+
+        var venta = crearVenta();
+        VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
-        
+
     }//GEN-LAST:event_pizzaCapricciosaMouseClicked
 
     private void pizzaFruttidimareMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pizzaFruttidimareMouseClicked
         // TODO add your handling code here:
-        Producto producto = new Producto();
-        producto.ingredientes= new String[3];
-        producto.nombre=pizzaFruttidimare.getText();
-        producto.precio=Float.parseFloat(precPizzaFruttidimare.getText());
-        
-        producto.ingredientes[0]="jamon";
-        producto.ingredientes[1]="pepperoni";
-        producto.ingredientes[2]="champiñones";
-        
-        
-         VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
-        
+        Producto producto = new Producto(pizzaFruttidimare.getText());
+        producto.ingredientes = new String[3];
+        producto.precio = Float.parseFloat(precPizzaFruttidimare.getText());
+
+        producto.ingredientes[0] = "jamon";
+        producto.ingredientes[1] = "pepperoni";
+        producto.ingredientes[2] = "champiñones";
+
+        var venta = crearVenta();
+        VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
-        
+
     }//GEN-LAST:event_pizzaFruttidimareMouseClicked
 
     private void pizzaBoscaiolaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pizzaBoscaiolaMouseClicked
-        Producto producto = new Producto();
-        producto.ingredientes= new String[3];
-        producto.nombre=pizzaBoscaiola.getText();
-        producto.precio=Float.parseFloat(precPizzaBoscaiola.getText());
-        
-        producto.ingredientes[0]="pimientos";
-        producto.ingredientes[1]="perejil";
-        producto.ingredientes[2]="champiñones";
-        
-        
-         VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
-        
+        Producto producto = new Producto(pizzaBoscaiola.getText());
+        producto.ingredientes = new String[3];
+        producto.precio = Float.parseFloat(precPizzaBoscaiola.getText());
+
+        producto.ingredientes[0] = "pimientos";
+        producto.ingredientes[1] = "perejil";
+        producto.ingredientes[2] = "champiñones";
+
+        var venta = crearVenta();
+        VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_pizzaBoscaiolaMouseClicked
 
     private void etiTelimonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiTelimonMouseClicked
         // TODO add your handling code here:
-        Producto producto = new Producto();
-        producto.nombre=etiTelimon.getText();
-        producto.precio=Float.parseFloat(precioteLimon.getText());
-        
-        
-         VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
-        
+        Producto producto = new Producto(etiTelimon.getText());
+        producto.precio = Float.parseFloat(precioteLimon.getText());
+
+        var venta = crearVenta();
+        VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_etiTelimonMouseClicked
 
     private void etiLimonadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiLimonadaMouseClicked
         // TODO add your handling code here:
-        Producto producto = new Producto();
-        producto.nombre=etiLimonada.getText();
-        producto.precio=Float.parseFloat(precioLimonada.getText());
-         VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
+        Producto producto = new Producto(etiLimonada.getText());
+        producto.precio = Float.parseFloat(precioLimonada.getText());
         
+        var venta = crearVenta();
+        VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_etiLimonadaMouseClicked
 
     private void etiCocacolaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiCocacolaMouseClicked
         // TODO add your handling code here:
-        Producto producto = new Producto();
-        producto.nombre=etiCocacola.getText();
-        producto.precio=Float.parseFloat(precioCocacola.getText());
-         VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
+        Producto producto = new Producto(etiCocacola.getText());
+        producto.precio = Float.parseFloat(precioCocacola.getText());
         
+        var venta = crearVenta();
+        VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_etiCocacolaMouseClicked
 
     private void etiPepsiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiPepsiMouseClicked
         // TODO add your handling code here:
-        Producto producto = new Producto();
-        producto.nombre=etiPepsi.getText();
-        producto.precio=Float.parseFloat(precioPepsi.getText());
-         VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
+        Producto producto = new Producto(etiPepsi.getText());
+        producto.precio = Float.parseFloat(precioPepsi.getText());
         
+        var venta = crearVenta();
+        VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_etiPepsiMouseClicked
 
     private void etiAguaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiAguaMouseClicked
         // TODO add your handling code here:
-        Producto producto = new Producto();
-        producto.nombre=etiAgua.getText();
-        producto.precio=Float.parseFloat(precioAgua.getText());
-         VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
+        Producto producto = new Producto(etiAgua.getText());
+        producto.precio = Float.parseFloat(precioAgua.getText());
         
+        var venta = crearVenta();
+        VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_etiAguaMouseClicked
 
     private void etiAguamineralMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiAguamineralMouseClicked
         // TODO add your handling code here:
-        Producto producto = new Producto();
-        producto.nombre=etiAguamineral.getText();
-        producto.precio=Float.parseFloat(precioAguamineral.getText());
-         VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
+        Producto producto = new Producto(etiAguamineral.getText());
+        producto.precio = Float.parseFloat(precioAguamineral.getText());
         
+        var venta = crearVenta();
+        VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_etiAguamineralMouseClicked
 
     private void etiTagliatelleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiTagliatelleMouseClicked
         // TODO add your handling code here:
-        Producto producto = new Producto();
-        producto.ingredientes= new String[3];
-        producto.nombre=etiTagliatelle.getText();
-        producto.precio=Float.parseFloat(precioTagliatelle.getText());
-        
-        producto.ingredientes[0]="Queso Parmesano";
-        producto.ingredientes[1]="Salsa cremosa";
-        
-        
-        
-         VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
-        
+        Producto producto = new Producto(etiTagliatelle.getText());
+        producto.ingredientes = new String[3];
+        producto.precio = Float.parseFloat(precioTagliatelle.getText());
+
+        producto.ingredientes[0] = "Queso Parmesano";
+        producto.ingredientes[1] = "Salsa cremosa";
+
+        var venta = crearVenta();
+        VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_etiTagliatelleMouseClicked
 
     private void etiMarinaraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiMarinaraMouseClicked
         // TODO add your handling code here:
-        Producto producto = new Producto();
-        producto.ingredientes= new String[3];
-        producto.nombre=etiMarinara.getText();
-        producto.precio=Float.parseFloat(precioMarinara.getText());
-        
-        producto.ingredientes[0]="Calamar";
-        producto.ingredientes[1]="Mejillones";
-        producto.ingredientes[2]="Langostinos";
-        
-        
-         VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
-        
+        Producto producto = new Producto(etiMarinara.getText());
+        producto.ingredientes = new String[3];
+        producto.precio = Float.parseFloat(precioMarinara.getText());
+
+        producto.ingredientes[0] = "Calamar";
+        producto.ingredientes[1] = "Mejillones";
+        producto.ingredientes[2] = "Langostinos";
+
+        var venta = crearVenta();
+        VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_etiMarinaraMouseClicked
 
     private void etiPuttanescaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiPuttanescaMouseClicked
         // TODO add your handling code here:
-        Producto producto = new Producto();
-        producto.ingredientes= new String[3];
-        producto.nombre=etiPuttanesca.getText();
-        producto.precio=Float.parseFloat(precioPuttanesca.getText());
-        
-        producto.ingredientes[0]="Aceituna negra";
-        producto.ingredientes[1]="Guindilla";
-        
-        
-         VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
-        
+        Producto producto = new Producto(etiPuttanesca.getText());
+        producto.ingredientes = new String[3];
+        producto.precio = Float.parseFloat(precioPuttanesca.getText());
+
+        producto.ingredientes[0] = "Aceituna negra";
+        producto.ingredientes[1] = "Guindilla";
+
+        var venta = crearVenta();
+        VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_etiPuttanescaMouseClicked
 
     private void etiBologneseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiBologneseMouseClicked
         // TODO add your handling code here:
-        Producto producto = new Producto();
-        producto.ingredientes= new String[3];
-        producto.nombre=etiBolognese.getText();
-        producto.precio=Float.parseFloat(precioBolognese.getText());
-        
-        producto.ingredientes[0]="Albahaca";
-        producto.ingredientes[1]="Queso parmesano";
-        
-        
-         VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
-        
+        Producto producto = new Producto(etiBolognese.getText());
+        producto.ingredientes = new String[3];
+        producto.precio = Float.parseFloat(precioBolognese.getText());
+
+        producto.ingredientes[0] = "Albahaca";
+        producto.ingredientes[1] = "Queso parmesano";
+
+        var venta = crearVenta();
+        VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_etiBologneseMouseClicked
 
     private void etiAmatricianaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiAmatricianaMouseClicked
         // TODO add your handling code here:
-        Producto producto = new Producto();
-        producto.ingredientes= new String[3];
-        producto.nombre=etiAmatriciana.getText();
-        producto.precio=Float.parseFloat(precioAmatriciana.getText());
-        
-        producto.ingredientes[0]="Papada de cerdo (guanciale)";
-        producto.ingredientes[1]="Queso pecorino";
-        
-        
-         VentanaVentaComida vistaplato = new VentanaVentaComida(producto);
-        
+        Producto producto = new Producto(etiAmatriciana.getText());
+        producto.ingredientes = new String[3];
+        producto.precio = Float.parseFloat(precioAmatriciana.getText());
+
+        producto.ingredientes[0] = "Papada de cerdo (guanciale)";
+        producto.ingredientes[1] = "Queso pecorino";
+
+        var venta = crearVenta();
+        VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_etiAmatricianaMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         command.enviarACocina();
         VentanaElegirMesa ventana1 = new VentanaElegirMesa();
         ventana1.setVisible(true);
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
-    
-    public void SetImageLabel(JLabel nombrelabel, String root){
-        ImageIcon imagen = new ImageIcon(root); 
+
+    public void SetImageLabel(JLabel nombrelabel, String root) {
+        ImageIcon imagen = new ImageIcon(root);
         Icon icon = new ImageIcon(
                 imagen.getImage().getScaledInstance(nombrelabel.getWidth(), nombrelabel.getHeight(), Image.SCALE_DEFAULT));
         nombrelabel.setIcon(icon);
         this.repaint();
     }
+
     /**
      * @param args the command line arguments
      */
@@ -830,9 +815,21 @@ JOptionPane.showMessageDialog(this, scrollPane, "Resumen de la Orden", JOptionPa
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaMenu().setVisible(true);
+                new VentanaMenu(null).setVisible(true);
             }
         });
+    }
+
+    private Venta crearVenta() {
+        var venta = gestionVenta.primeraEnCola();
+        if (venta == null) {
+            venta = new Venta(clienteActual);
+            venta.setEstado(EstadoVentaEnum.EN_PROCESO);
+            venta.setFecha(new Date());
+            gestionVenta.agregar(venta);
+        }
+     
+        return venta;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -893,6 +890,4 @@ JOptionPane.showMessageDialog(this, scrollPane, "Resumen de la Orden", JOptionPa
     private javax.swing.JLabel signoPrecio9;
     // End of variables declaration//GEN-END:variables
 
-
-    
 }

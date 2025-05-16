@@ -4,8 +4,9 @@
  */
 package co.edu.unicolombo.pb.proaula.views;
 
-import co.edu.unicolombo.pb.proaula.conceptos.ItemPedido;
+import co.edu.unicolombo.pb.proaula.conceptos.ItemVenta;
 import co.edu.unicolombo.pb.proaula.conceptos.Producto;
+import co.edu.unicolombo.pb.proaula.crud.GestionVentas;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -23,7 +24,7 @@ public class VentanaVentaBebida extends javax.swing.JDialog {
      */
     float cantidad = 0;
     Producto producto;
-    
+    GestionVentas gestionVentas;
     public VentanaVentaBebida(Producto producto) {
         
         initComponents();
@@ -125,13 +126,14 @@ public class VentanaVentaBebida extends javax.swing.JDialog {
         
         }else{
             
-            ItemPedido item = new ItemPedido();
+            ItemVenta item = new ItemVenta();
             item.producto = producto;
             item.cantidad = cantidad;
             item.calcularSubtotal();
-            VentanaRegistro.gestionVenta.agregarItem(item);
+            var venta = gestionVentas.primeraEnCola();
+            venta.agregarItem(item);
 
-            JOptionPane.showMessageDialog(null, "El valor por la cantidad selecionada es: $ " + item.subtotal);
+            JOptionPane.showMessageDialog(null, "El valor por la cantidad selecionada es: $ " + item.calcularSubtotal());
         this.dispose();
         }
     }//GEN-LAST:event_btnAceptarActionPerformed

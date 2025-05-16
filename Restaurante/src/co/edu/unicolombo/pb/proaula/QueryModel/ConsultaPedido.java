@@ -4,9 +4,9 @@
  */
 package co.edu.unicolombo.pb.proaula.QueryModel;
 
-import co.edu.unicolombo.pb.proaula.Constants.EstadoPedido;
+import co.edu.unicolombo.pb.proaula.Constants.EstadoVentaEnum;
 import co.edu.unicolombo.pb.proaula.conceptos.ComandoPedido;
-import co.edu.unicolombo.pb.proaula.conceptos.ItemPedido;
+import co.edu.unicolombo.pb.proaula.conceptos.ItemVenta;
 import java.util.Date;
 import java.util.List;
 
@@ -17,8 +17,8 @@ import java.util.List;
 public class ConsultaPedido {
     private String id;
     private String nombreCliente;
-    private List<ItemPedido> items;
-    private EstadoPedido estado;
+    private List<ItemVenta> items;
+    private EstadoVentaEnum estado;
     private Date fechaCreacion;
     private float totalPedido;
 
@@ -30,7 +30,7 @@ public class ConsultaPedido {
         return consulta;
     }
 
-    public void actualizarEstado(EstadoPedido estado) {
+    public void actualizarEstado(EstadoVentaEnum estado) {
         this.estado = estado;
     }
 
@@ -42,7 +42,7 @@ public class ConsultaPedido {
         this.nombreCliente = nombreCliente;
     }
 
-    public void setEstado(EstadoPedido estado) {
+    public void setEstado(EstadoVentaEnum estado) {
         this.estado = estado;
     }
 
@@ -62,7 +62,7 @@ public class ConsultaPedido {
         return nombreCliente;
     }
 
-    public EstadoPedido getEstado() {
+    public EstadoVentaEnum getEstado() {
         return estado;
     }
 

@@ -4,7 +4,7 @@
  */
 package co.edu.unicolombo.pb.proaula.repositorios;
 
-import co.edu.unicolombo.pb.proaula.Constants.EstadoPedido;
+import co.edu.unicolombo.pb.proaula.Constants.EstadoVentaEnum;
 import co.edu.unicolombo.pb.proaula.QueryModel.ConsultaPedido;
 import java.util.List;
 
@@ -14,5 +14,5 @@ import java.util.List;
  */
 public interface ConsultaPedidoRepositorio {
     ConsultaPedido obtenerPorId(String pedidoId);
-    List<ConsultaPedido> obtenerPedidosPorEstado(EstadoPedido estado);
+    List<ConsultaPedido> obtenerPedidosPorEstado(EstadoVentaEnum estado);
 }

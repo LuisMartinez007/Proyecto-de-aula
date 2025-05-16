@@ -6,7 +6,9 @@ import co.edu.unicolombo.pb.proaula.crud.GestionVentas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,9 +17,8 @@ import javax.swing.JOptionPane;
  */
 public class VentanaRegistro extends javax.swing.JFrame {
 
-    public static GestionVentas gestionVenta;
     public static GestionCliente gestionCliente;
-
+    Cliente cliente ;
     public VentanaRegistro() {
 
         initComponents();
@@ -37,7 +38,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
         etiGuardar.setVisible(false);
         
         gestionCliente = new GestionCliente();
-        gestionVenta = new GestionVentas();
+
     }
 
     /**
@@ -290,8 +291,8 @@ public class VentanaRegistro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Número de documento invalido.");
             return;
         }
-        Cliente cliente = new Cliente(nombre,documento);
-        gestionVenta.setCliente(cliente);
+         cliente = new Cliente(nombre,documento);
+
         if(etiGuardar.getText().equals("Guardar")){
             if(gestionCliente.buscarCliente(documento) == null){
             gestionCliente.guardarCliente(cliente);
@@ -375,7 +376,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
     }
     
     private void siguienteVentana(){
-        VentanaMenu menu = new VentanaMenu(); 
+        VentanaMenu menu = new VentanaMenu(cliente); 
         menu.setLocationRelativeTo(null);
         menu.setVisible(true);
         this.dispose();

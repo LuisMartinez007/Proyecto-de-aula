@@ -4,7 +4,7 @@
  */
 package co.edu.unicolombo.pb.proaula.conceptos;
 
-import co.edu.unicolombo.pb.proaula.Constants.EstadoPedido;
+import co.edu.unicolombo.pb.proaula.Constants.EstadoVentaEnum;
 import co.edu.unicolombo.pb.proaula.QueryModel.ConsultaPedido;
 import co.edu.unicolombo.pb.proaula.repositorios.ComandoPedidoRepositorio;
 import co.edu.unicolombo.pb.proaula.repositorios.ConsultaPedidoRepositorio;
@@ -25,7 +25,7 @@ public class ServicioPedidos {
         pedido.enviarACocina();
     }
 
-    public void actualizarEstadoPedido(String pedidoId, EstadoPedido nuevoEstado) {
+    public void actualizarEstadoPedido(String pedidoId, EstadoVentaEnum nuevoEstado) {
         ComandoPedido pedido = new ComandoPedido();
         pedido.actualizarEstado(nuevoEstado);
         comandoRepositorio.actualizarEstado(pedidoId, nuevoEstado);

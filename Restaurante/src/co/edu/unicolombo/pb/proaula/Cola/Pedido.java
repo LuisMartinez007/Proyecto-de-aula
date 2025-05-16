@@ -19,6 +19,7 @@ public class Pedido {
     private BigDecimal total;
     private String estado;
     private LocalDateTime fechaCreacion;
+    // Usuario mesero;
     
     public Pedido() {
         this.id = UUID.randomUUID();

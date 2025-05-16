@@ -36,6 +36,11 @@ public class VentanaElegirMesa extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         elegirmesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mesa #1", "Mesa #2", "Mesa #3", "Mesa #4", "Mesa #5" }));
+        elegirmesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elegirmesaActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mesa.png"))); // NOI18N
@@ -81,11 +86,15 @@ public class VentanaElegirMesa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        VentanaEstadoPedido ventana = new VentanaEstadoPedido();
-        ventana.setTitle(""+elegirmesa.getSelectedItem());
-        ventana.setVisible(true);
-        this.dispose();
+        //VentanaEstadoPedido ventana = new VentanaEstadoPedido();
+        //ventana.setTitle(""+elegirmesa.getSelectedItem());
+        //ventana.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void elegirmesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elegirmesaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_elegirmesaActionPerformed
 
     /**
      * @param args the command line arguments
