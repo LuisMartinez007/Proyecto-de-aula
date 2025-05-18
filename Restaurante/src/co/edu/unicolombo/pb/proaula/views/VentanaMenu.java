@@ -502,38 +502,45 @@ public final class VentanaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFacturaActionPerformed
-        venta = gestionVenta.primeraEnCola();
-        float totalGeneral = venta.calcularTotalGeneral();
-        double porcentajePropina = 0.10;
-        double propina = totalGeneral * porcentajePropina;
-        double totalPagar = totalGeneral + propina;
+      venta = gestionVenta.primeraEnCola();
+float totalGeneral = venta.calcularTotalGeneral();
+double iva = totalGeneral * 0.19;
+double subtotalConIva = totalGeneral + iva;
 
-        var items = venta.getItemsVenta();
-        String[][] datos = new String[items.size() + 3][2];
-        int i = 0;
-        for (ItemVenta item : items) {
-            datos[i][0] = item.producto.nombre + " (x " + item.cantidad + ")";
-            datos[i][1] = String.format("$%.2f", item.calcularSubtotal());
-            i++;
-        }
+double porcentajePropina = 0.10;
+double propina = subtotalConIva * porcentajePropina;
 
-        datos[i++] = new String[]{"Subtotal", String.format("$%.2f", totalGeneral)};
-        datos[i++] = new String[]{"Valor por el servicio (10%)", String.format("$%.2f", propina)};
-        datos[i] = new String[]{"Total a pagar", String.format("$%.2f", totalPagar)};
+double totalPagar = subtotalConIva + propina;
 
-        String[] columnas = {"Descripción", "Valor"};
+var items = venta.getItemsVenta();
+String[][] datos = new String[items.size() + 4][2]; // Aumentamos a +4 para incluir IVA
+int i = 0;
+for (ItemVenta item : items) {
+    datos[i][0] = item.producto.nombre + " (x " + item.cantidad + ")";
+    datos[i][1] = String.format("$%.2f", item.calcularSubtotal());
+    i++;
+}
 
-        JTable tablaResumen = new JTable(datos, columnas);
-        tablaResumen.setRowHeight(25);
+datos[i++] = new String[]{"Subtotal", String.format("$%.2f", totalGeneral)};
+datos[i++] = new String[]{"IVA (19%)", String.format("$%.2f", iva)};
+datos[i++] = new String[]{"Valor por el servicio (10%)", String.format("$%.2f", propina)};
+datos[i] = new String[]{"Total a pagar", String.format("$%.2f", totalPagar)};
 
-        JScrollPane scrollPane = new JScrollPane(tablaResumen);
-        tablaResumen.setFillsViewportHeight(true);
+String[] columnas = {"Descripción", "Valor"};
 
-        JOptionPane.showMessageDialog(this, scrollPane, "Resumen de la Orden", JOptionPane.INFORMATION_MESSAGE);
-        dispose();
-        var ventanaRegistro = new VentanaRegistro();
-        ventanaRegistro.setLocationRelativeTo(null);
-        ventanaRegistro.setVisible(true);
+JTable tablaResumen = new JTable(datos, columnas);
+tablaResumen.setRowHeight(25);
+
+JScrollPane scrollPane = new JScrollPane(tablaResumen);
+tablaResumen.setFillsViewportHeight(true);
+
+JOptionPane.showMessageDialog(this, scrollPane, "Resumen de la Orden", JOptionPane.INFORMATION_MESSAGE);
+dispose();
+
+var ventanaRegistro = new VentanaRegistro();
+ventanaRegistro.setLocationRelativeTo(null);
+ventanaRegistro.setVisible(true);
+
 
     }//GEN-LAST:event_botonFacturaActionPerformed
 

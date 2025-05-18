@@ -31,8 +31,8 @@ public class ItemVenta {
     }
 
     public float calcularSubtotal(){
-        var impuesto = producto.precio * cantidad  * 0.19F;
-        return  producto.precio * cantidad  + impuesto;
+        var impuesto = producto.precio * cantidad;
+        return  producto.precio * cantidad;
     }
     
 }
