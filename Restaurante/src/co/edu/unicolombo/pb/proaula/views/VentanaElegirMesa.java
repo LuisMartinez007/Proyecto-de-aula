@@ -86,9 +86,9 @@ public class VentanaElegirMesa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //VentanaEstadoPedido ventana = new VentanaEstadoPedido();
-        //ventana.setTitle(""+elegirmesa.getSelectedItem());
-        //ventana.setVisible(true);
+        VentanaEstadoPedido ventana = new VentanaEstadoPedido();
+        ventana.setTitle(""+elegirmesa.getSelectedItem());
+        ventana.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

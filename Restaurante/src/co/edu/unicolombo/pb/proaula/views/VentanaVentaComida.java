@@ -167,13 +167,12 @@ public class VentanaVentaComida extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "La cantidad no puede ser 0");
             return;
         }
-        
         ItemVenta item = new ItemVenta();
         item.producto = producto;
         item.cantidad = cantidad;
         item.calcularSubtotal();
-        var venta = gestionVentas.primeraEnCola();
-        venta.agregarItem(item);
+        VentanaMenu.venta  = gestionVentas.primeraEnCola();
+        VentanaMenu.venta.agregarItem(item);
 
         JOptionPane.showMessageDialog(null, "El valor por la cantidad selecionada es: $" + item.calcularSubtotal());
         this.dispose();

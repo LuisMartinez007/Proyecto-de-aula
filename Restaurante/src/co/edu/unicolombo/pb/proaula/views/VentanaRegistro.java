@@ -18,7 +18,8 @@ import javax.swing.JOptionPane;
 public class VentanaRegistro extends javax.swing.JFrame {
 
     public static GestionCliente gestionCliente;
-    Cliente cliente ;
+    public static Cliente cliente ;
+    
     public VentanaRegistro() {
 
         initComponents();

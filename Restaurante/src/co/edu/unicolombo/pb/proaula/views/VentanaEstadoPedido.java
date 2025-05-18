@@ -5,10 +5,8 @@
 package co.edu.unicolombo.pb.proaula.views;
 
 import co.edu.unicolombo.pb.proaula.Constants.EstadoVentaEnum;
-import co.edu.unicolombo.pb.proaula.conceptos.ComandoPedido;
+import co.edu.unicolombo.pb.proaula.conceptos.ItemPedido;
 import co.edu.unicolombo.pb.proaula.conceptos.ItemVenta;
-import co.edu.unicolombo.pb.proaula.conceptos.Producto;
-import co.edu.unicolombo.pb.proaula.crud.GestionVentas;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -29,8 +27,6 @@ public class VentanaEstadoPedido extends javax.swing.JFrame {
     private Map<Integer, Long> tiempoInicioBebidas;
     private static final long TIEMPO_ENTREGA_BEBIDAS = 60000; // 1:30 minutos
     private static final String[] bebidas = {"Te de limon", "Limonada", "Coca cola", "Pepsi", "Agua", "Agua mineral"};
-    Producto producto;
-    GestionVentas gestionVentas;
     
     public VentanaEstadoPedido() {
         initComponents();
@@ -92,12 +88,12 @@ public class VentanaEstadoPedido extends javax.swing.JFrame {
         modelo.addColumn("Estado");
         
         tablaPedido.setModel(modelo);
-         
-        List<ItemVenta> items = gestionVentas.getItems();
+        
+        List<ItemVenta> items = VentanaMenu.venta.getItemsVenta();
         
         for (int i = 0; i < items.size(); i++) {
             ItemVenta item = items.get(i);
-            String nombreProducto = item.getProducto().getNombre();
+            String nombreProducto = item.producto.nombre;
             
             if (esBebida(item)) {
                 estadosProductos.put(i, EstadoVentaEnum.COMPLETADO);
@@ -111,7 +107,7 @@ public class VentanaEstadoPedido extends javax.swing.JFrame {
     }
     
     private boolean esBebida(ItemVenta item) {
-        String nombreProducto = producto.nombre;
+        String nombreProducto = item.producto.nombre;
         return Arrays.asList(bebidas).contains(nombreProducto);
     }
     
@@ -125,9 +121,9 @@ public class VentanaEstadoPedido extends javax.swing.JFrame {
         }, 0, 30000);
     }
     
-    private void actualizarEstados() {
+        private void actualizarEstados() {
         java.awt.EventQueue.invokeLater(() -> {
-            List<ItemVenta> items = VentanaRegistro.gestionVenta.getItems();
+            List<ItemVenta> items = VentanaMenu.venta.getItemsVenta();
             long tiempoActual = System.currentTimeMillis();
             
             for (int i = 0; i < items.size(); i++) {

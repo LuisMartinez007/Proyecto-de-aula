@@ -5,6 +5,7 @@
 package co.edu.unicolombo.pb.proaula.conceptos;
 
 import co.edu.unicolombo.pb.proaula.Constants.EstadoVentaEnum;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Deque;
 import java.util.HashMap;
@@ -26,14 +27,14 @@ public class Venta {
     private Cliente cliente;
     private Date fecha;
 //    public HashMap<String, ItemVenta> itemsVenta;
-    private Set<ItemVenta> itemsVenta;
+    private List<ItemVenta> itemsVenta;
     private EstadoVentaEnum estado;
 
     public Venta(Cliente cliente) {
         this.id = serial.getAndIncrement();
         this.cliente = cliente;
         this.fecha = new Date();
-        this.itemsVenta = new HashSet();
+        itemsVenta = new ArrayList<>();
     }
 
   
@@ -54,16 +55,12 @@ public class Venta {
         this.fecha = fecha;
     }
 
-    public Set<ItemVenta> getItemsVenta() {
+    public List<ItemVenta> getItemsVenta() {
         return itemsVenta;
     }
 
-    public void setItemsVenta(Set itemsVenta) {
-        this.itemsVenta = itemsVenta;
-    }
-
     public void agregarItem(ItemVenta item) {
-        this.getItemsVenta().add(item);
+        itemsVenta.add(item);
     }
 
     public Integer getId() {
@@ -105,7 +102,11 @@ public class Venta {
        itemEncontrado.venta = item.venta;
 
     }
-
+    
+    //public List<ItemPedido> getItems(){
+      //  return new ArrayList<>(venta.itemsVenta.values());
+    //}
+    
     public EstadoVentaEnum getEstado() {
         return estado;
     }

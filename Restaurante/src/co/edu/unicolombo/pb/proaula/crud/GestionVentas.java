@@ -58,5 +58,13 @@ public class GestionVentas {
         return ventas;
     }
 
+    public List<Venta> recorrerCola() {
+    if (ventas.isEmpty()) {
+        return new ArrayList<>();
+    }
     
+    List<Venta> listaVentas = new ArrayList<>(ventas);
+    
+    return listaVentas;
+    }
 }

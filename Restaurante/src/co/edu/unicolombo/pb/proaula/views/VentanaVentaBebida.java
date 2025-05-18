@@ -27,6 +27,7 @@ public class VentanaVentaBebida extends javax.swing.JDialog {
     GestionVentas gestionVentas;
     public VentanaVentaBebida(Producto producto) {
         
+        gestionVentas = new GestionVentas();
         initComponents();
         SetImageLabel(etiFondo,"src/imagenes/fondo_cuenta.jpg");
         etiBebida.setText(producto.nombre);
@@ -124,23 +125,22 @@ public class VentanaVentaBebida extends javax.swing.JDialog {
            if(cantidad==0){
             JOptionPane.showMessageDialog(null, "La cantidad no puede ser 0");
         
-        }else{
+        }
             
             ItemVenta item = new ItemVenta();
             item.producto = producto;
             item.cantidad = cantidad;
             item.calcularSubtotal();
-            var venta = gestionVentas.primeraEnCola();
-            venta.agregarItem(item);
+            VentanaMenu.venta = gestionVentas.primeraEnCola();
+            VentanaMenu.venta.agregarItem(item);
 
             JOptionPane.showMessageDialog(null, "El valor por la cantidad selecionada es: $ " + item.calcularSubtotal());
-        this.dispose();
-        }
+            dispose();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     public void SetImageLabel(JLabel nombrelabel, String root){

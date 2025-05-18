@@ -30,11 +30,13 @@ public final class VentanaMenu extends javax.swing.JFrame {
     public GestionCliente gestionCliente;
     public GestionVentas gestionVenta;
     public Cliente clienteActual;
+    public static Venta venta;
 
     public VentanaMenu(Cliente cliente) {
         gestionCliente = new GestionCliente();
         gestionVenta = new GestionVentas();
         this.clienteActual = cliente;
+        venta = new Venta(this.clienteActual);
         initComponents();
         command = new ComandoPedido();
         SetImageLabel(etiPizza, "src/imagenes/pizza.jpeg");
@@ -500,7 +502,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFacturaActionPerformed
-        var venta = gestionVenta.primeraEnCola();
+        venta = gestionVenta.primeraEnCola();
         float totalGeneral = venta.calcularTotalGeneral();
         double porcentajePropina = 0.10;
         double propina = totalGeneral * porcentajePropina;
@@ -554,6 +556,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         producto.ingredientes[1] = "Perejil";
         producto.ingredientes[2] = "Hierbas";
 
+        
         var venta = crearVenta();
         VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
@@ -571,8 +574,9 @@ public final class VentanaMenu extends javax.swing.JFrame {
         producto.ingredientes[0] = "Ají";
         producto.ingredientes[1] = "Tomate";
         producto.ingredientes[2] = "Oregano";
-        
-        var venta = crearVenta();
+
+
+        var venta = crearVenta();        
         VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
@@ -587,6 +591,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         producto.ingredientes[1] = "Alcachofa";
         producto.ingredientes[2] = "Champiñones";
 
+        
         var venta = crearVenta();
         VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
@@ -604,6 +609,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         producto.ingredientes[1] = "pepperoni";
         producto.ingredientes[2] = "champiñones";
 
+        
         var venta = crearVenta();
         VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
@@ -620,6 +626,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         producto.ingredientes[1] = "perejil";
         producto.ingredientes[2] = "champiñones";
 
+        
         var venta = crearVenta();
         VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
@@ -631,6 +638,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         Producto producto = new Producto(etiTelimon.getText());
         producto.precio = Float.parseFloat(precioteLimon.getText());
 
+        
         var venta = crearVenta();
         VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
         vistaplato.setLocationRelativeTo(this);
@@ -641,8 +649,9 @@ public final class VentanaMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         Producto producto = new Producto(etiLimonada.getText());
         producto.precio = Float.parseFloat(precioLimonada.getText());
-        
-        var venta = crearVenta();
+
+
+        var venta = crearVenta();        
         VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
@@ -652,8 +661,9 @@ public final class VentanaMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         Producto producto = new Producto(etiCocacola.getText());
         producto.precio = Float.parseFloat(precioCocacola.getText());
-        
-        var venta = crearVenta();
+
+
+        var venta = crearVenta();        
         VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
@@ -663,8 +673,9 @@ public final class VentanaMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         Producto producto = new Producto(etiPepsi.getText());
         producto.precio = Float.parseFloat(precioPepsi.getText());
-        
-        var venta = crearVenta();
+
+
+        var venta = crearVenta();        
         VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
@@ -674,8 +685,9 @@ public final class VentanaMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         Producto producto = new Producto(etiAgua.getText());
         producto.precio = Float.parseFloat(precioAgua.getText());
-        
-        var venta = crearVenta();
+
+
+        var venta = crearVenta();        
         VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
@@ -685,8 +697,9 @@ public final class VentanaMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         Producto producto = new Producto(etiAguamineral.getText());
         producto.precio = Float.parseFloat(precioAguamineral.getText());
-        
-        var venta = crearVenta();
+
+
+        var venta = crearVenta();        
         VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
@@ -701,6 +714,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         producto.ingredientes[0] = "Queso Parmesano";
         producto.ingredientes[1] = "Salsa cremosa";
 
+        
         var venta = crearVenta();
         VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
@@ -717,6 +731,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         producto.ingredientes[1] = "Mejillones";
         producto.ingredientes[2] = "Langostinos";
 
+        
         var venta = crearVenta();
         VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
@@ -732,6 +747,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         producto.ingredientes[0] = "Aceituna negra";
         producto.ingredientes[1] = "Guindilla";
 
+        
         var venta = crearVenta();
         VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
@@ -747,6 +763,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         producto.ingredientes[0] = "Albahaca";
         producto.ingredientes[1] = "Queso parmesano";
 
+        
         var venta = crearVenta();
         VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
@@ -762,6 +779,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         producto.ingredientes[0] = "Papada de cerdo (guanciale)";
         producto.ingredientes[1] = "Queso pecorino";
 
+        
         var venta = crearVenta();
         VentanaVentaComida vistaplato = new VentanaVentaComida(this, producto);
         vistaplato.setLocationRelativeTo(this);
@@ -769,7 +787,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_etiAmatricianaMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        
         command.enviarACocina();
         VentanaElegirMesa ventana1 = new VentanaElegirMesa();
         ventana1.setVisible(true);
@@ -821,10 +839,10 @@ public final class VentanaMenu extends javax.swing.JFrame {
     }
 
     private Venta crearVenta() {
-        var venta = gestionVenta.primeraEnCola();
+        venta = gestionVenta.primeraEnCola();
         if (venta == null) {
             venta = new Venta(clienteActual);
-            venta.setEstado(EstadoVentaEnum.EN_PROCESO);
+            venta.setEstado(EstadoVentaEnum.PENDIENTE);
             venta.setFecha(new Date());
             gestionVenta.agregar(venta);
         }

@@ -28,6 +28,11 @@ public class Producto {
         this.id = serial.getAndDecrement();
     }
 
+    public Producto() {
+        
+    }
+    
+
   
     
 }
