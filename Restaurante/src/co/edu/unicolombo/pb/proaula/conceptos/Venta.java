@@ -66,6 +66,10 @@ public class Venta {
     public Integer getId() {
         return id;
     }
+    
+    public void limpiarLista(){
+        itemsVenta.clear();
+    }
 
     public ItemVenta buscarItemPorId(Integer id) throws Exception {
         var respuesta = itemsVenta.stream()

@@ -10,6 +10,7 @@ import co.edu.unicolombo.pb.proaula.crud.GestionVentas;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -25,8 +26,8 @@ public class VentanaVentaBebida extends javax.swing.JDialog {
     float cantidad = 0;
     Producto producto;
     GestionVentas gestionVentas;
-    public VentanaVentaBebida(Producto producto) {
-        
+    public VentanaVentaBebida(JFrame ventanaMenu,Producto producto) {
+        super(ventanaMenu,true);
         gestionVentas = new GestionVentas();
         initComponents();
         SetImageLabel(etiFondo,"src/imagenes/fondo_cuenta.jpg");
@@ -181,7 +182,7 @@ public class VentanaVentaBebida extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VentanaVentaBebida dialog = new VentanaVentaBebida(null);
+                VentanaVentaBebida dialog = new VentanaVentaBebida(null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

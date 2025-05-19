@@ -33,7 +33,7 @@ public class VentanaElegirMesa extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         elegirmesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mesa #1", "Mesa #2", "Mesa #3", "Mesa #4", "Mesa #5" }));
         elegirmesa.addActionListener(new java.awt.event.ActionListener() {

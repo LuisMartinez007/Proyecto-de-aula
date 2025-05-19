@@ -80,8 +80,8 @@ public class VentanaVentaComida extends javax.swing.JDialog {
         getContentPane().add(lblPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 240, 24));
 
         etiCantidad.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        etiCantidad.setText("¿Cuantas desea?");
-        getContentPane().add(etiCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 120, -1));
+        etiCantidad.setText("Cantidad");
+        getContentPane().add(etiCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 120, -1));
 
         cantidadProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5" }));
         cantidadProducto.addActionListener(new java.awt.event.ActionListener() {

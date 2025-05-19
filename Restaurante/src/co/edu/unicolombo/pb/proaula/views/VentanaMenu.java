@@ -39,6 +39,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         venta = new Venta(this.clienteActual);
         initComponents();
         command = new ComandoPedido();
+        botonFactura.setEnabled(false);
         SetImageLabel(etiPizza, "src/imagenes/pizza.jpeg");
         SetImageLabel(etiImangenBebidas, "src/imagenes/Limonada.jpg");
         SetImageLabel(etiFondo, "src/imagenes/menu2.jpg");
@@ -118,7 +119,7 @@ public final class VentanaMenu extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         etiFondo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Bambino");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -502,45 +503,47 @@ public final class VentanaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFacturaActionPerformed
-      venta = gestionVenta.primeraEnCola();
-float totalGeneral = venta.calcularTotalGeneral();
-double iva = totalGeneral * 0.19;
-double subtotalConIva = totalGeneral + iva;
+        venta = gestionVenta.primeraEnCola();
+        float totalGeneral = venta.calcularTotalGeneral();
+        double iva = totalGeneral * 0.19;
+        double subtotalConIva = totalGeneral + iva;
 
-double porcentajePropina = 0.10;
-double propina = subtotalConIva * porcentajePropina;
+        double porcentajePropina = 0.10;
+        double propina = subtotalConIva * porcentajePropina;
 
-double totalPagar = subtotalConIva + propina;
+        double totalPagar = subtotalConIva + propina;
 
-var items = venta.getItemsVenta();
-String[][] datos = new String[items.size() + 4][2]; // Aumentamos a +4 para incluir IVA
-int i = 0;
-for (ItemVenta item : items) {
-    datos[i][0] = item.producto.nombre + " (x " + item.cantidad + ")";
-    datos[i][1] = String.format("$%.2f", item.calcularSubtotal());
-    i++;
-}
+        var items = venta.getItemsVenta();
+        String[][] datos = new String[items.size() + 4][2]; // Aumentamos a +4 para incluir IVA
+        int i = 0;
+        for (ItemVenta item : items) {
+            datos[i][0] = item.producto.nombre + " (x " + item.cantidad + ")";
+            datos[i][1] = String.format("$%.2f", item.calcularSubtotal());
+            i++;
+        }
 
-datos[i++] = new String[]{"Subtotal", String.format("$%.2f", totalGeneral)};
-datos[i++] = new String[]{"IVA (19%)", String.format("$%.2f", iva)};
-datos[i++] = new String[]{"Valor por el servicio (10%)", String.format("$%.2f", propina)};
-datos[i] = new String[]{"Total a pagar", String.format("$%.2f", totalPagar)};
+        datos[i++] = new String[]{"Subtotal", String.format("$%.2f", totalGeneral)};
+        datos[i++] = new String[]{"IVA (19%)", String.format("$%.2f", iva)};
+        datos[i++] = new String[]{"Valor por el servicio (10%)", String.format("$%.2f", propina)};
+        datos[i] = new String[]{"Total a pagar", String.format("$%.2f", totalPagar)};
 
-String[] columnas = {"Descripción", "Valor"};
+        String[] columnas = {"Descripción", "Valor"};
 
-JTable tablaResumen = new JTable(datos, columnas);
-tablaResumen.setRowHeight(25);
+        JTable tablaResumen = new JTable(datos, columnas);
+        tablaResumen.setRowHeight(25);
 
-JScrollPane scrollPane = new JScrollPane(tablaResumen);
-tablaResumen.setFillsViewportHeight(true);
+        JScrollPane scrollPane = new JScrollPane(tablaResumen);
+        tablaResumen.setFillsViewportHeight(true);
 
-JOptionPane.showMessageDialog(this, scrollPane, "Resumen de la Orden", JOptionPane.INFORMATION_MESSAGE);
-dispose();
+        JOptionPane.showMessageDialog(this, scrollPane, "Resumen de la Orden", JOptionPane.INFORMATION_MESSAGE);
+        dispose();
 
-var ventanaRegistro = new VentanaRegistro();
-ventanaRegistro.setLocationRelativeTo(null);
-ventanaRegistro.setVisible(true);
-
+        gestionVenta.finalizarVenta();
+        System.out.print(gestionVenta.recorrerCola());
+        var ventanaRegistro = new VentanaRegistro();
+        ventanaRegistro.setLocationRelativeTo(null);
+        ventanaRegistro.setVisible(true);
+        venta.limpiarLista();
 
     }//GEN-LAST:event_botonFacturaActionPerformed
 
@@ -647,7 +650,7 @@ ventanaRegistro.setVisible(true);
 
         
         var venta = crearVenta();
-        VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
+        VentanaVentaBebida vistaplato = new VentanaVentaBebida(this,producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_etiTelimonMouseClicked
@@ -659,7 +662,7 @@ ventanaRegistro.setVisible(true);
 
 
         var venta = crearVenta();        
-        VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
+        VentanaVentaBebida vistaplato = new VentanaVentaBebida(this,producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_etiLimonadaMouseClicked
@@ -671,7 +674,7 @@ ventanaRegistro.setVisible(true);
 
 
         var venta = crearVenta();        
-        VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
+        VentanaVentaBebida vistaplato = new VentanaVentaBebida(this,producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_etiCocacolaMouseClicked
@@ -683,7 +686,7 @@ ventanaRegistro.setVisible(true);
 
 
         var venta = crearVenta();        
-        VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
+        VentanaVentaBebida vistaplato = new VentanaVentaBebida(this,producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_etiPepsiMouseClicked
@@ -695,7 +698,7 @@ ventanaRegistro.setVisible(true);
 
 
         var venta = crearVenta();        
-        VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
+        VentanaVentaBebida vistaplato = new VentanaVentaBebida(this,producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_etiAguaMouseClicked
@@ -707,7 +710,7 @@ ventanaRegistro.setVisible(true);
 
 
         var venta = crearVenta();        
-        VentanaVentaBebida vistaplato = new VentanaVentaBebida(producto);
+        VentanaVentaBebida vistaplato = new VentanaVentaBebida(this,producto);
         vistaplato.setLocationRelativeTo(this);
         vistaplato.setVisible(true);
     }//GEN-LAST:event_etiAguamineralMouseClicked
@@ -794,7 +797,7 @@ ventanaRegistro.setVisible(true);
     }//GEN-LAST:event_etiAmatricianaMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        botonFactura.setEnabled(true);
         command.enviarACocina();
         VentanaElegirMesa ventana1 = new VentanaElegirMesa();
         ventana1.setVisible(true);

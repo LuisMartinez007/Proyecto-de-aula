@@ -49,7 +49,7 @@ public class VentanaEstadoPedido extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPedido = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("OK");
